@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>TKF</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://tkfblog.com/"/>
+  <updated>2020-05-04T05:18:23.077Z</updated>
+  <id>http://tkfblog.com/</id>
+  
+  <author>
+    <name>TKF</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>物理层</title>
+    <link href="http://tkfblog.com/post/652d7ab3.html"/>
+    <id>http://tkfblog.com/post/652d7ab3.html</id>
+    <published>2020-05-04T03:15:22.809Z</published>
+    <updated>2020-05-04T05:18:23.077Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="数据通信理论"><a href="#数据通信理论" class="headerlink" title="数据通信理论"></a>数据通信理论</h2><h3 id="傅里叶分析"><a href="#傅里叶分析" class="headerlink" title="傅里叶分析"></a>傅里叶分析</h3><p>对于有限时间内的数据信号g(t)，可以将其转换为傅里叶级数(Fourier series)：</p><script type="math/tex; mode=display">g(t)=\frac{1}{2}c+\sum_{n=1}^{\infty}a_n\sin(2\pi nft)+\sum_{n=1}^{\infty}b_n\cos(2\pi nft)</script><p>n次谐波(harmonics)的正弦振幅和余弦振幅$a_n$和$b_n$可表示为：</p><script type="math/tex; mode=display">a_n=\frac 2 T\int_{0}^{T}g(t)\sin(2\pi nft)dt,\ b_n=\frac 2 T\int_{0}^{T}g(t)\cos(2\pi nft)dt,\ c=\frac 2 T\int_0^Tg(t)dt</script>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;数据通信理论&quot;&gt;&lt;a href=&quot;#数据通信理论&quot; class=&quot;headerlink&quot; title=&quot;数据通信理论&quot;&gt;&lt;/a&gt;数据通信理论&lt;/h2&gt;&lt;h3 id=&quot;傅里叶分析&quot;&gt;&lt;a href=&quot;#傅里叶分析&quot; class=&quot;headerlink&quot; title=
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
