@@ -271,8 +271,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-05T18:13:18+08:00">
-                2020-05-05
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-06T18:13:18+08:00">
+                2020-05-06
               </time>
             
 
@@ -334,10 +334,26 @@
         
           
             <h2 id="数据通信理论"><a href="#数据通信理论" class="headerlink" title="数据通信理论"></a>数据通信理论</h2><h3 id="傅里叶分析"><a href="#傅里叶分析" class="headerlink" title="傅里叶分析"></a>傅里叶分析</h3><p>对于有限时间内的数据信号g(t)，可以将其转换为<strong>傅里叶级数</strong>(Fourier series)：</p>
-<script type="math/tex; mode=display">g(t)=\frac{1}{2}c+\sum_{n=1}^{\infty}a_n\sin(2\pi nft)+\sum_{n=1}^{\infty}b_n\cos(2\pi nft)</script><p>n次<strong>谐波</strong>(harmonics)的正弦振幅和余弦振幅$a_n$和$b_n$可表示为：</p>
-<script type="math/tex; mode=display">a_n=\frac 2 T\int_{0}^{T}g(t)\sin(2\pi nft)dt</script><script type="math/tex; mode=display">b_n=\frac 2 T\int_{0}^{T}g(t)\cos(2\pi nft)dt</script><script type="math/tex; mode=display">c=\frac 2 T\int_0^Tg(t)dt</script><p>将电流或电压在时域中的变化转换为振幅或传输能量在频域中的变化</p>
-<p>传输设施对于不同的傅里叶分量衰减程度不同，且在某截止频率$f_c$范围内，振幅不会明显地发生减弱，称该频率范围称为<strong>带宽</strong>（bandwidth）</p>
-
+<script type="math/tex; mode=display">
+g(t)=\frac{1}{2}c+\sum_{n=1}^{\infty}a_n\sin(2\pi nft)+\sum_{n=1}^{\infty}b_n\cos(2\pi nft)</script><p>n次<strong>谐波</strong>(harmonics)的正弦振幅和余弦振幅$a_n$和$b_n$以及常数c可表示为：</p>
+<script type="math/tex; mode=display">
+a_n=\frac 2 T\int_{0}^{T}g(t)\sin(2\pi nft)dt,\ b_n=\frac 2 T\int_{0}^{T}g(t)\cos(2\pi nft)dt,\ c=\frac 2 T\int_0^Tg(t)dt</script><p>将电流或电压在时域中的变化转换为振幅或传输能量在频域中的变化</p>
+<p>传输设施对于不同的傅里叶分量衰减程度不同，且在某截止频率$f_c$范围内，振幅不会明显地发生减弱，称该频率范围称为<strong>（模拟）带宽</strong>（bandwidth），单位为赫兹(Hz)，通常情况下，带宽指能量保留一半以下的频率；<strong>（数字）带宽</strong>则表示信道的最大数据速率，单位为比特每秒(bps)</p>
+<p>二者实际上密不可分，提高带宽的目标是使收到的模拟信号具有足以重构出数字信号即原始发送比特序列的精度</p>
+<p>称从0到最大频率的信号为<strong>基带</strong>(baseband)信号，称被向上挪移并占用某个更大频率范围的信号为<strong>通带</strong>(passband)信号</p>
+<h3 id="信道的最大数据速率"><a href="#信道的最大数据速率" class="headerlink" title="信道的最大数据速率"></a>信道的最大数据速率</h3><p>尼奎斯特(Henry Nyquist)最早提出了一个公式，用来表示一个有限带宽的无噪声信道的最大数据速率：</p>
+<script type="math/tex; mode=display">
+Maximum=2B\log_2V(bps)</script><p>其中，B表示模拟带宽，V表示离散等级，例如二进制信号只有两级(0,1)</p>
+<p>信道中传输信号存在热损耗，称为（随机）<strong>热噪声</strong>；热噪声的数量可以用信号功率S与噪声功率N的比值来度量，这样的比值称之为<strong>信噪比</strong>(SNR, Signal-to-Noise Ratio)，即S/N。通常为了扩大适用范围，采用对数形式来表式：</p>
+<script type="math/tex; mode=display">
+SNR=10\log_{10}S/N(dB)</script><p>香农(Claude Shannon)将尼奎斯特的公式推广至存在热噪声的情况：</p>
+<script type="math/tex; mode=display">
+Maximum=B\log_2(1+S/N)(bps)</script><p>热噪声取决于很多因素，例如介质的构成、厚度和电线或光纤的长度等，这也就限制了现实中的数据率，要增大数据率，就必须提高带宽或尽可能地降低信噪比，</p>
+<h3 id="传输介质"><a href="#传输介质" class="headerlink" title="传输介质"></a>传输介质</h3><h4 id="引导性传输介质"><a href="#引导性传输介质" class="headerlink" title="引导性传输介质"></a>引导性传输介质</h4><h5 id="磁介质"><a href="#磁介质" class="headerlink" title="磁介质"></a>磁介质</h5><p>将数据写到磁带或其他可擦写介质上，用物理方法将磁带或磁盘进行转移，再在目标机器上将数据读取出来，我们永远也无法超越一辆满载磁盘飞驰在高速公路上的汽车的带宽</p>
+<h5 id="双绞线-twisted-pair"><a href="#双绞线-twisted-pair" class="headerlink" title="双绞线(twisted pair)"></a>双绞线(twisted pair)</h5><p>故名思义，双绞线由两根相互绝缘的铜线组成，通过互相抵消可以减少两根铜线的辐射；多根双绞线捆扎成束需互相缠绕来减少干扰</p>
+<p>双绞线可以分为几类，其中常见的有早期的3类线(Category 3)，由四根双绞线缠绕成束的5类线(Category 5)，到6类为止，所有双绞线仅由导线和绝缘层简单地构成，称为<strong>非屏蔽双绞线</strong>(UTP, Unshielded Twisted Pair)</p>
+<p>可以双向使用的链路称为<strong>全双工</strong>(full-duplex)链路，可以双向使用但一次只能使用一个方向的链路称为<strong>半双工</strong>(half-duplex)链路，只能使用一个方向的链路称为<strong>单工</strong>(simplex)链路</p>
+<h5 id="同轴电缆-coaxial-cable"><a href="#同轴电缆-coaxial-cable" class="headerlink" title="同轴电缆(coaxial cable)"></a>同轴电缆(coaxial cable)</h5>
           
         
       
