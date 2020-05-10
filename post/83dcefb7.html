@@ -93,7 +93,7 @@
 <meta property="og:description" content="设Q是实正交阵且$\det Q&#x3D;1$，证明：存在实反对称阵A使得Q&#x3D;e^A.引理1.设$A\in M_n(\mathbb R)$，$AA^T&#x3D;A^TA$，求证：存在实正交阵Q使得  Q^TAQ&#x3D;diag(\begin{bmatrix} a_1 &amp; -b_1 \\  b_1 &amp; a_1\end{bmatrix},\cdots,\begin{bmatrix} a_k &amp; -b_k \\  b_k &amp;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-05-08T15:11:53.000Z">
-<meta property="article:modified_time" content="2020-05-10T04:47:19.300Z">
+<meta property="article:modified_time" content="2020-05-10T04:53:40.636Z">
 <meta property="article:author" content="TKF">
 <meta property="article:tag" content="Algorithms">
 <meta property="article:tag" content=" Networks">
@@ -330,7 +330,7 @@
       
 
       
-        <h3 id="设Q是实正交阵且-det-Q-1-，证明：存在实反对称阵A使得Q-e-A"><a href="#设Q是实正交阵且-det-Q-1-，证明：存在实反对称阵A使得Q-e-A" class="headerlink" title="设Q是实正交阵且$\det Q=1$，证明：存在实反对称阵A使得Q=e^A."></a>设Q是实正交阵且$\det Q=1$，证明：存在实反对称阵A使得Q=e^A.</h3><p>引理1.设$A\in M_n(\mathbb R)$，$AA^T=A^TA$，求证：存在实正交阵Q使得</p>
+        <h2 id="设Q是实正交阵且-det-Q-1-，证明：存在实反对称阵A使得Q-e-A"><a href="#设Q是实正交阵且-det-Q-1-，证明：存在实反对称阵A使得Q-e-A" class="headerlink" title="设Q是实正交阵且$\det Q=1$，证明：存在实反对称阵A使得Q=e^A."></a>设Q是实正交阵且$\det Q=1$，证明：存在实反对称阵A使得Q=e^A.</h2><p>引理1.设$A\in M_n(\mathbb R)$，$AA^T=A^TA$，求证：存在实正交阵Q使得</p>
 <script type="math/tex; mode=display">
 Q^TAQ=diag(\begin{bmatrix} a_1 & -b_1 \\  b_1 & a_1\end{bmatrix},\cdots,\begin{bmatrix} a_k & -b_k \\  b_k & a_k\end{bmatrix},\lambda_{2k+1},\cdots,\lambda_n),</script><p>其中$a_j,b_j,\lambda_l\in \mathbb R,b_j\neq 0.$</p>
 <p>(1)n=1时，令Q=1即可；n=2时，分两种情况讨论：</p>
@@ -340,7 +340,7 @@ A_1=Q_1^TAQ^T=\begin{bmatrix} u^T \\ v^T\end{bmatrix}A\begin{bmatrix} u&v\end{bm
 <p>2.若A没有实特征值，令$\lambda = a + ib(b\neq 0), \gamma = \alpha+i\beta$.则由$A(\alpha +i\beta)=(a+ib)(\alpha +i\beta)$得到</p>
 <script type="math/tex; mode=display">
 A\alpha=a\alpha-b\beta,\ A\beta=b\alpha+a\beta,\ A\begin{bmatrix}\alpha & \beta\end{bmatrix}=\begin{bmatrix}\alpha&\beta\end{bmatrix}\begin{bmatrix}a&b\\  -b&a\end{bmatrix}</script><p>下证$\parallel \alpha\parallel=\parallel\beta\parallel$且$\alpha^T\beta=0$:</p>
-<p>A是实正规矩阵，故A可以酉相似对角化。不妨设$A=U^H\Lambda U,\ AA^T=U^H\Lambda UU^T\Lambda \overline{U}=A^TA=U^T\Lambda \overline{U}U^H\Lambda U$。由于$A^TA$为实矩阵，故$U^H\Lambda UU^T\Lambda\overline{U}=\overline{U^T\Lambda\overline{U}U^H\Lambda U}=U^H\overline{\Lambda}UU^T\Lambda U$，即</p>
+<p>由A实正规知A可酉相似对角化。不妨设$A=U^H\Lambda U,\ AA^T=U^H\Lambda UU^T\Lambda \overline{U}=A^TA=U^T\Lambda \overline{U}U^H\Lambda U$。由于$A^TA$为实矩阵，故$U^H\Lambda UU^T\Lambda\overline{U}=\overline{U^T\Lambda\overline{U}U^H\Lambda U}=U^H\overline{\Lambda}UU^T\Lambda U$，即</p>
 <script type="math/tex; mode=display">
 \Lambda UU^T\Lambda=\overline{\Lambda}UU^T\overline{\Lambda}</script><p>由$b\neq 0$知$UU^T=0$。$\gamma^T\gamma\Rightarrow\alpha^T\alpha-\beta^T\beta+i(\alpha^T\beta+\beta^T\alpha)=0\Rightarrow\parallel\alpha\parallel=\parallel\beta\parallel,\ \alpha^T\beta=0$。</p>
 <p>令$\parallel\alpha\parallel=\parallel\beta\parallel=1$，得到二阶正交矩阵$Q_1=\begin{bmatrix} \alpha&amp;\beta\end{bmatrix}$，则有</p>
@@ -353,7 +353,9 @@ A_1=Q_1^TA_1Q_1=\begin{bmatrix} u_1^T\\\vdots\\u_{k+1}^T\end{bmatrix}\begin{bmat
 <script type="math/tex; mode=display">
 Q_2^TBQ_2=diag(\begin{bmatrix}a_1&b_1\\-b_1&a_1\end{bmatrix},\cdots,\begin{bmatrix}a_j&b_j\\-b_j&a_j\end{bmatrix},\lambda_{2j+1},\cdots,\lambda_k)</script><p>则有</p>
 <script type="math/tex; mode=display">
-\begin{bmatrix}Q_2^T&\ \\ \ & 1\end{bmatrix}A_1\begin{bmatrix}Q_2&\ \\ \ & 1\end{bmatrix}=\begin{bmatrix}Q_2^TBQ_2\\ \ & \lambda\end{bmatrix}=diag(\begin{bmatrix}a_1&b_1\\-b_1&a_1\end{bmatrix},\cdots,\begin{bmatrix}a_j&b_j\\-b_j&a_j\end{bmatrix},\lambda_{2j+1},\cdots,\lambda_k,\lambda)</script><p>取$Q=Q_1\begin{bmatrix}Q_2&amp;\ \\ \ &amp; 1\end{bmatrix}$满足题意。</p>
+\begin{align*}
+\begin{bmatrix}Q_2^T&\ \\ \ & 1\end{bmatrix}A_1\begin{bmatrix}Q_2&\ \\ \ & 1\end{bmatrix}&=\begin{bmatrix}Q_2^TBQ_2\\ \ & \lambda\end{bmatrix}\\&=diag(\begin{bmatrix}a_1&b_1\\-b_1&a_1\end{bmatrix},\cdots,\begin{bmatrix}a_j&b_j\\-b_j&a_j\end{bmatrix},\lambda_{2j+1},\cdots,\lambda_k,\lambda)
+\end{align*}</script><p>取$Q=Q_1\begin{bmatrix}Q_2&amp;\ \\ \ &amp; 1\end{bmatrix}$满足题意。</p>
 <p>2.若$\lambda$不为实数，令$\lambda=a+ib(b\neq 0),\ \gamma=\alpha+i\beta,\ \parallel\alpha\parallel=\parallel\beta\parallel=1$，则$\ A\begin{bmatrix}\alpha &amp; \beta\end{bmatrix}=\begin{bmatrix}\alpha&amp;\beta\end{bmatrix}\begin{bmatrix}a&amp;b\\  -b&amp;a\end{bmatrix}$。将$\gamma$扩充为$k+1$阶正交矩阵$Q_1=\begin{bmatrix}\alpha&amp;\beta&amp;\cdots&amp;u_{k-1}^T\end{bmatrix}$，</p>
 <p>则有</p>
 <script type="math/tex; mode=display">
@@ -365,13 +367,16 @@ Q_2^TBQ_2=diag(\begin{bmatrix}a_1&b_1\\-b_1&a_1\end{bmatrix},\cdots,\begin{bmatr
 <p>推论1.对于实正交矩阵$A$，存在实正交矩阵$Q$使得</p>
 <script type="math/tex; mode=display">
 Q^TAQ=diag(\begin{bmatrix} \cos\theta_1 & \sin\theta_1 \\  -\sin\theta_1 & \cos\theta_1\end{bmatrix},\cdots,\begin{bmatrix} \cos\theta_k & \sin\theta_k \\  -\sin\theta_k & \cos\theta_k\end{bmatrix},1,\cdots,1,-1,\cdots,-1)</script><p>下面我们利用推论1来证明原命题：</p>
-<p>易知Q正交相似于$diag(\begin{bmatrix} \cos\theta_1 &amp; \sin\theta_1 \\  -\sin\theta_1 &amp; \cos\theta_1\end{bmatrix},\cdots,\begin{bmatrix} \cos\theta_k &amp; \sin\theta_k \\  -\sin\theta_k &amp; \cos\theta_k\end{bmatrix},1,\cdots,1,-1,\cdots,-1)=Q_1^TQQ_1$。不妨令$A_i=\begin{bmatrix}\ &amp;\theta_i\\ -\theta_i&amp;\ \end{bmatrix}$，下证$e^{A_i}=\begin{bmatrix}\cos\theta_i&amp;\sin\theta_i\\ -\cos\theta_i&amp;\sin\theta_i\end{bmatrix}：<br>$由$A$的特征值为$i\theta,\ -i\theta$可得A的特征多项式满足$f(A)=A^2+\theta^2I=0$，则</p>
+<p>存在$Q_1$使得$diag(\begin{bmatrix} \cos\theta_1 &amp; \sin\theta_1 \\  -\sin\theta_1 &amp; \cos\theta_1\end{bmatrix},\cdots,\begin{bmatrix} \cos\theta_k &amp; \sin\theta_k \\  -\sin\theta_k &amp; \cos\theta_k\end{bmatrix},1,\cdots,1,-1,\cdots,-1)=Q_1^TQQ_1$。</p>
+<p>不妨令$A_i=\begin{bmatrix}\ &amp;\theta_i\\ -\theta_i&amp;\ \end{bmatrix}$，下证$e^{A_i}=\begin{bmatrix}\cos\theta_i&amp;\sin\theta_i\\ -\cos\theta_i&amp;\sin\theta_i\end{bmatrix}：<br>$由$A$的特征值为$i\theta,\ -i\theta$可得A的特征多项式满足$f(A)=A^2+\theta^2I=0$，则</p>
 <script type="math/tex; mode=display">
 \begin{align*}
 e^{A}&=\sum_{m=0}^{\infty}\frac{A^m}{m!}=\sum_{m=0}^{\infty}\frac{A^{2m}}{(2m)!}+\sum_{m=0}^{\infty}\frac{A^{2m+1}}{(2m+1)!}\\&=\sum_{m=0}^{\infty}\frac{(-\theta^2I)^{m}}{(2m)!}+\sum_{m=0}^{\infty}\frac{(-\theta^2I)^{m}}{(2m+1)!}A\\
 &=\sum_{m=0}^{\infty}\frac{(-1)^{m}\theta^{2m}}{(2m)!}I+\sum_{m=0}^{\infty}\frac{(-1)^{m}\theta^{2m+1}}{(2m+1)!}\begin{bmatrix}0&1\\-1&0\end{bmatrix}\\
 &=\begin{bmatrix}\cos\theta&\sin\theta\\-\sin\theta&\cos\theta\end{bmatrix}
-\end{align*}</script><p>且$e^{\begin{bmatrix}\ &amp;\pi\\  -\pi&amp;\ \end{bmatrix}}=\begin{bmatrix}-1&amp;\ \\  \ &amp;-1\end{bmatrix}$，由$\det{Q}=1$知Q有偶数个特征值为-1，令$A=Q_1diag(A_1,\cdots,A_k,\begin{bmatrix}\ &amp;\pi\\  -\pi&amp;\ \end{bmatrix},\cdots,0)$满足题意。</p>
+\end{align*}</script><p>且$e^{\begin{bmatrix}\ &amp;\pi\\  -\pi&amp;\ \end{bmatrix}}=\begin{bmatrix}-1&amp;\ \\  \ &amp;-1\end{bmatrix}$，由$\det{Q}=1$知Q有偶数个特征值为-1，令</p>
+<script type="math/tex; mode=display">
+A=Q_1diag(A_1,\cdots,A_k,\begin{bmatrix}\ &\pi\\  -\pi&\ \end{bmatrix},\cdots,0)Q_1^T</script><p>满足题意。</p>
 
       
     </div>
@@ -538,7 +543,7 @@ e^{A}&=\sum_{m=0}^{\infty}\frac{A^m}{m!}=\sum_{m=0}^{\infty}\frac{A^{2m}}{(2m)!}
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#设Q是实正交阵且-det-Q-1-，证明：存在实反对称阵A使得Q-e-A"><span class="nav-number">1.</span> <span class="nav-text">设Q是实正交阵且$\det Q&#x3D;1$，证明：存在实反对称阵A使得Q&#x3D;e^A.</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#设Q是实正交阵且-det-Q-1-，证明：存在实反对称阵A使得Q-e-A"><span class="nav-number">1.</span> <span class="nav-text">设Q是实正交阵且$\det Q&#x3D;1$，证明：存在实反对称阵A使得Q&#x3D;e^A.</span></a></li></ol></div>
             
 
           </div>
