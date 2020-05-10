@@ -93,7 +93,7 @@
 <meta property="og:description" content="数据通信理论傅里叶分析对于有限时间内的数据信号g(t)，可以将其转换为傅里叶级数(Fourier series)：  g(t)&#x3D;\frac{1}{2}c+\sum_{n&#x3D;1}^{\infty}a_n\sin(2\pi nft)+\sum_{n&#x3D;1}^{\infty}b_n\cos(2\pi nft)n次谐波(harmonics)的正弦振幅和余弦振幅$a_n$和$b_n$以及常数c可表示为：  a_">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-05-06T10:13:18.000Z">
-<meta property="article:modified_time" content="2020-05-06T08:48:22.571Z">
+<meta property="article:modified_time" content="2020-05-10T11:08:35.731Z">
 <meta property="article:author" content="TKF">
 <meta property="article:tag" content="Algorithms">
 <meta property="article:tag" content=" Networks">
@@ -350,7 +350,26 @@ Maximum=B\log_2(1+S/N)(bps)</script><p>热噪声取决于很多因素，例如�
 <h5 id="双绞线-twisted-pair"><a href="#双绞线-twisted-pair" class="headerlink" title="双绞线(twisted pair)"></a>双绞线(twisted pair)</h5><p>故名思义，双绞线由两根相互绝缘的铜线组成，通过互相抵消可以减少两根铜线的辐射；多根双绞线捆扎成束需互相缠绕来减少干扰</p>
 <p>双绞线可以分为几类，其中常见的有早期的3类线(Category 3)，由四根双绞线缠绕成束的5类线(Category 5)，到6类为止，所有双绞线仅由导线和绝缘层简单地构成，称为<strong>非屏蔽双绞线</strong>(UTP, Unshielded Twisted Pair)</p>
 <p>可以双向使用的链路称为<strong>全双工</strong>(full-duplex)链路，可以双向使用但一次只能使用一个方向的链路称为<strong>半双工</strong>(half-duplex)链路，只能使用一个方向的链路称为<strong>单工</strong>(simplex)链路</p>
-<h5 id="同轴电缆-coaxial"><a href="#同轴电缆-coaxial" class="headerlink" title="同轴电缆(coaxial)"></a>同轴电缆(coaxial)</h5>
+<h5 id="同轴电缆-coaxial-cable"><a href="#同轴电缆-coaxial-cable" class="headerlink" title="同轴电缆(coaxial cable)"></a>同轴电缆(coaxial cable)</h5><p>同轴电缆由硬的铜芯和外面包上一层绝缘材料组成，绝缘材料外面是一层密织的网状圆柱形导体，外层导体再覆盖上一层保护塑料外套。</p>
+<p>由于具有较高的带宽和良好的抗噪性，同轴电缆仍然是有线电视和计算机城域网的常用传输介质。</p>
+<h5 id="电力线"><a href="#电力线" class="headerlink" title="电力线"></a>电力线</h5><p>既能传输电能，又能传输数据信号（接通电源即可收看节目？）</p>
+<p>家庭网络使用电力线的困难在于电线是专为分发电源信号设计的，只要采用的通信方案具有抗频率损耗和突发错误的能力，在典型的居家电力线上达到不小于100Mbps的发送还是切实可行的</p>
+<h5 id="光纤"><a href="#光纤" class="headerlink" title="光纤"></a>光纤</h5><p>光纤主要用于网络骨干的长途运输、高速局域网以及高速Internet接入，比如光纤到户(FttH, Fibre to the Home)。光纤传输系统由三个关键部件构成：光源、传输介质、探测器。光源和探测器实现了电脉冲到光脉冲再到电脉冲的转换。</p>
+<p>不同光束以不同的角度来回反射着向前传播的光纤称为<strong>多模光纤</strong>(multimode fibre)；如果光的直径减小到只有及格光波波长大小的时候，则光纤就如同一个波导，由此形成了<strong>单模光纤</strong>(single-mode fibre)。</p>
+<p>光通过玻璃的衰减取决于光的波长（以及玻璃的某些物理特性）。现代光纤通信最常用的三个波段，分别集中在0.85微米，1.30微米和1.55微米，三个波段都具有$25000~30000GHz$的宽度。</p>
+<p>光纤可按照三种不同的方式进行连接。连接器终止（10~20%衰减），机械手段对接（10%衰减），光纤熔合（微小衰减）。</p>
+<p>通常用作信号源的有两种光源发光二极管和半导体激光，接收端是一个光电二极管。</p>
+<p>1.光纤能容纳更高的带宽来适用于高端网络；2.光纤还具有不受电源浪涌、电磁干扰或电源故障等影响的优点；3.光纤细小且重量较轻；4.光纤不易被接入，所以具有较高的安全性</p>
+<h4 id="无线传输"><a href="#无线传输" class="headerlink" title="无线传输"></a>无线传输</h4><h5 id="电磁频谱"><a href="#电磁频谱" class="headerlink" title="电磁频谱"></a>电磁频谱</h5><p>大多数信息传输都是用相对窄的频段，这些技术重点关注窄频内信号的频谱使用效率以及用多大能量的传输来获得合理的数据率。有些情况下也会使用较宽的频段：</p>
+<p>1.<strong>跳频扩频</strong>(frequency hopping spread spectrum)：通信过程较难被监听，且对于多径衰减和窄频干扰现象有很好的抵御能力。这种通信方式的鲁棒性对于频谱中的拥挤那部分非常有用，例如ISM频段。跳频技术在商业领域也有广泛的应用，例如蓝牙和802.11。</p>
+<p>2.<strong>直接序列扩频</strong>(direct sequence spread spectrum)：利用码片序列将数据信号展开到一个很宽的频段上，这是一项能使多个信号共享同一频段的频谱效率的方法，信号被赋予不同的码片称为<strong>码分多址</strong>(CDMA,Code Devision Multiple Access)。CDMA构成了3G移动电话网络的基础，还被应用于全球定位系统中。</p>
+<p>3.<strong>超宽带通信</strong>(UWB, Ultra-WideBand)：UWB发送一系列快速脉冲，这些脉冲随着通信信息而不断变化自己的位置，这种位置的快速变换导致信号被稀疏地分布在一个很宽的频带上。UWB称为是其他信号的衬底(underlay)。用于通过固体物体成像（地面、墙壁和身体）或作为精确定位系统的一部分。</p>
+<h5 id="无限电传输"><a href="#无限电传输" class="headerlink" title="无限电传输"></a>无限电传输</h5><p>无线电波的特性与频率有关。在低频部分，无线电波能够很好地穿透障碍物，但是随着信号源越来越远，存在严重的路径损耗；高频无线电波更容易被雨水和其他障碍物吸收，在所有频率上，无线电波都会受到马达和其他电子设备的干扰。</p>
+<h5 id="微波传输"><a href="#微波传输" class="headerlink" title="微波传输"></a>微波传输</h5><p>通过抛物线形状的天线，可以把所有的能量集中于一小束，从而获得极高的信噪比，但要求发射端和接收端的天线必须精准地相互对齐，这种定向传播要求发射器与接收器的空间排布满足最小间距规则。</p>
+<p>微波信号若延迟抵达会相互干扰，这种效果称为<strong>多径衰落</strong>(multipath fading)。</p>
+<h5 id="红外传输"><a href="#红外传输" class="headerlink" title="红外传输"></a>红外传输</h5><p>非引导性红外波被广泛应用于短程通信。红外线的传播具有方向性、便宜且易于制造，因无法穿过固体障碍物广泛应用于遥控器，防窃听等。</p>
+<h5 id="光通信"><a href="#光通信" class="headerlink" title="光通信"></a>光通信</h5><p>非引导性光通信可根据显示器或者指示灯的变化来传递信息，从而创建一个围绕显示器的低速网络。</p>
+
       
     </div>
     
@@ -516,7 +535,7 @@ Maximum=B\log_2(1+S/N)(bps)</script><p>热噪声取决于很多因素，例如�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据通信理论"><span class="nav-number">1.</span> <span class="nav-text">数据通信理论</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#傅里叶分析"><span class="nav-number">1.1.</span> <span class="nav-text">傅里叶分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#信道的最大数据速率"><span class="nav-number">1.2.</span> <span class="nav-text">信道的最大数据速率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#传输介质"><span class="nav-number">1.3.</span> <span class="nav-text">传输介质</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#引导性传输介质"><span class="nav-number">1.3.1.</span> <span class="nav-text">引导性传输介质</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#磁介质"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">磁介质</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#双绞线-twisted-pair"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">双绞线(twisted pair)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#同轴电缆-coaxial"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">同轴电缆(coaxial)</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据通信理论"><span class="nav-number">1.</span> <span class="nav-text">数据通信理论</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#傅里叶分析"><span class="nav-number">1.1.</span> <span class="nav-text">傅里叶分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#信道的最大数据速率"><span class="nav-number">1.2.</span> <span class="nav-text">信道的最大数据速率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#传输介质"><span class="nav-number">1.3.</span> <span class="nav-text">传输介质</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#引导性传输介质"><span class="nav-number">1.3.1.</span> <span class="nav-text">引导性传输介质</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#磁介质"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">磁介质</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#双绞线-twisted-pair"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">双绞线(twisted pair)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#同轴电缆-coaxial-cable"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">同轴电缆(coaxial cable)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#电力线"><span class="nav-number">1.3.1.4.</span> <span class="nav-text">电力线</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#光纤"><span class="nav-number">1.3.1.5.</span> <span class="nav-text">光纤</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#无线传输"><span class="nav-number">1.3.2.</span> <span class="nav-text">无线传输</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#电磁频谱"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">电磁频谱</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#无限电传输"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">无限电传输</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#微波传输"><span class="nav-number">1.3.2.3.</span> <span class="nav-text">微波传输</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#红外传输"><span class="nav-number">1.3.2.4.</span> <span class="nav-text">红外传输</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#光通信"><span class="nav-number">1.3.2.5.</span> <span class="nav-text">光通信</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
