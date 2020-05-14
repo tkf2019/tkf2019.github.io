@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://tkfblog.com/"/>
-  <updated>2020-05-10T04:53:40.636Z</updated>
+  <updated>2020-05-14T03:28:28.083Z</updated>
   <id>http://tkfblog.com/</id>
   
   <author>
@@ -15,6 +15,56 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hash</title>
+    <link href="http://tkfblog.com/post/718acd86.html"/>
+    <id>http://tkfblog.com/post/718acd86.html</id>
+    <published>2020-05-12T04:56:56.000Z</published>
+    <updated>2020-05-14T03:28:28.083Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;strong&gt;散列表&lt;/strong&gt;(hash
+        
+      
+    
+    </summary>
+    
+      <category term="Algorithm" scheme="http://tkfblog.com/categories/Algorithm/"/>
+    
+    
+      <category term="[object Object]" scheme="http://tkfblog.com/tags/object-Object/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>词频统计</title>
+    <link href="http://tkfblog.com/post/cca1b543.html"/>
+    <id>http://tkfblog.com/post/cca1b543.html</id>
+    <published>2020-05-12T04:01:17.000Z</published>
+    <updated>2020-05-14T02:55:23.669Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;Trie树&quot;&gt;&lt;a href=&quot;#Trie树&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="project" scheme="http://tkfblog.com/categories/project/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>1</title>
