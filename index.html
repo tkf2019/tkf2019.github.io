@@ -240,6 +240,490 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://tkfblog.com/post/34caa801.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="TKF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/TKF.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TKF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/post/34caa801.html" itemprop="url">埃拉托斯特尼筛法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-19T08:57:04+08:00">
+                2020-05-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ALG/" itemprop="url" rel="index">
+                    <span itemprop="name">ALG</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 10000</span></span><br><span class="line"><span class="keyword">int</span> N = <span class="number">0</span>, k = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> visit[MAXN], prime[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Sieve</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(visit, <span class="number">0</span>, <span class="keyword">sizeof</span>(visit));</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= N; i++)</span><br><span class="line">        <span class="keyword">if</span>(!visit[i])&#123;</span><br><span class="line">            prime[k++] = i;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = i * <span class="number">2</span>; j &lt;= N; j += i)</span><br><span class="line">                visit[j] = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; N;</span><br><span class="line">    Sieve();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k; i++)</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; prime[i] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对于查找0~n范围内的素数，时间复杂度为</p>
+<script type="math/tex; mode=display">
+\sum_{p\leqslant n}(\lfloor \frac n{p}\rfloor - 1)=O(n\sum_{p\leqslant n}\frac1p)=O(n\ln\ln n).</script><h3 id="复杂度证明"><a href="#复杂度证明" class="headerlink" title="复杂度证明"></a>复杂度证明</h3><p>Original Proof较为繁琐，我们这里只给出相对简便易懂的证明。</p>
+<p>应用阿贝尔求和公式(Abel Summation)：</p>
+<script type="math/tex; mode=display">
+\sum_{y<r\leqslant x}a(r)f(r) = A(x)f(x)-A(y)f(y)-\int_y^xA(t)f'(t)dt</script><p>其中$A(x)=\sum_  {r\leqslant x}a(r)$。</p>
+<p>引入素数计数函数：</p>
+<script type="math/tex; mode=display">
+\pi(x)=The\ number\ of\ prime\ numbers\ smaller\ than\ x</script><p>及素数特征函数：</p>
+<script type="math/tex; mode=display">
+a(r)=\left\{
+\begin{aligned}
+1\quad&r=p,\\0\quad&r\neq p.
+\end{aligned}
+\right.</script><p>令$f(r)=\frac 1 r，y=2$，可得</p>
+<script type="math/tex; mode=display">
+\sum_{p\leqslant x}\frac 1 p=\frac{\pi(x)}{x}+\int_2^x\frac{\pi(t)}{t^2}dt</script><p>引入素数特征函数：</p>
+<script type="math/tex; mode=display">
+a(r)=\left\{
+\begin{aligned}
+&\frac{\ln(p)} p\quad&r=p,\\&\quad0\quad&r\neq p.
+\end{aligned}
+\right.</script><p>得到</p>
+<script type="math/tex; mode=display">
+A(x)=\sum_{p\leqslant x}\frac{\ln p}p</script><p>令$f(r)=\frac{1}{\ln r}，y=2$，可得</p>
+<script type="math/tex; mode=display">
+\sum_{p\leqslant x}\frac 1 p=\frac{A(x)}{\ln x}+\int_2^x\frac{A(t)}{t(\ln t)^2}dt</script><p>我们有</p>
+<script type="math/tex; mode=display">
+\sum_{p\leqslant x}\frac{\ln p}p=\ln x+R(x),\ |R(x)| < 2</script><p>（具体证明见<a href="https://cloud.tsinghua.edu.cn/f/79acaf89175f4b9b8e0c/" target="_blank" rel="noopener">$Mertens’Theorem$</a>）</p>
+<p>代入上述等式可得</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+\sum_{p\leqslant x}\frac 1 p&=\frac{\ln x+R(x)}{\ln x}+\int_2^x\frac{\ln t+R(t)}{t(\ln t)^2}dt\\&=1+\frac{R(x)}{\ln x}+\int_2^x\frac{1}{t\ln t}dt+\int_2^x\frac{R(t)}{t(\ln t)^2}dt\\&<1+\frac{2}{\ln x}+\ln\ln x-\ln \ln 2+\int_2^x2d(-\frac{1}{\ln t})\\&=\ln \ln x+1+\frac{2}{\ln 2}-\ln\ln2.
+\end{align*}</script><p>易得</p>
+<script type="math/tex; mode=display">
+\sum_{p\geqslant 2}^{n}\frac1p=O(\ln\ln n)</script>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://tkfblog.com/post/498cfd8e.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="TKF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/TKF.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TKF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/post/498cfd8e.html" itemprop="url">并发编程</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-18T23:34:31+08:00">
+                2020-05-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C++</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="程序运行时间"><a href="#程序运行时间" class="headerlink" title="程序运行时间"></a>程序运行时间</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;thread&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;chrono&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;ctime&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">(<span class="keyword">int</span> s)</span></span>&#123;</span><br><span class="line">    this_thread::sleep_for(chrono::seconds(s));</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">time_t</span> start, <span class="built_in">end</span>;</span><br><span class="line">    start = clock();</span><br><span class="line">    <span class="function">thread <span class="title">t1</span><span class="params">(func, <span class="number">3</span>)</span></span>;</span><br><span class="line">    this_thread::sleep_for(chrono::seconds(<span class="number">2</span>));</span><br><span class="line">    <span class="built_in">end</span> = clock();</span><br><span class="line">    t1.join();</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; (<span class="keyword">double</span>)(<span class="built_in">end</span> - start) &lt;&lt; <span class="string">"ms"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; (<span class="keyword">double</span>)clock() / CLOCKS_PER_SEC &lt;&lt; <span class="string">"s"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://tkfblog.com/post/9fdad6da.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="TKF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/TKF.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TKF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/post/9fdad6da.html" itemprop="url">线性代数综合问题(2)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-17T19:09:49+08:00">
+                2020-05-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Math/" itemprop="url" rel="index">
+                    <span itemprop="name">Math</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="/post/Hexo\source\_posts\线性代数综合问题(2" alt>\Linear_1.png)</p>
+<p>同学的考试题~</p>
+<h4 id="a"><a href="#a" class="headerlink" title="(a)"></a>(a)</h4><p>$Multiple\ RHS\ by\ \lambda I_n-X$</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+\sum_{k=1}^{n}\frac{(\lambda I_n-X)x_kx_k^T}{\lambda-\lambda_k}&=\sum_{k=1}^{n}\frac{\lambda x_kx_k^T-\lambda_k x_kx_k^T}{\lambda-\lambda_k}\\&=\sum_{k=1}^{n}x_kx_k^T\\&=I_n
+\end{align*}</script><p>$Similarly,\ for\ X\ is\ symmetric$</p>
+<script type="math/tex; mode=display">
+\sum_{k=1}^{n}\frac{x_kx_k^T(\lambda I_n-X)}{\lambda-\lambda_k}=I_n</script><h4 id="b"><a href="#b" class="headerlink" title="(b)"></a>(b)</h4><p>$Suppose\ a\ matrix\ X_j\ which\ satisfies\ \lambda I_n-X_j\ is\ the\ matrix\ \lambda I_n-X\ changing\ its\ jth\ column\ into\ the\ base\ vector\ e_j.\ $</p>
+<p>$Then\ \det(\lambda I_{n-1}-Y_j)=\det(\lambda I_n-X_j),\ depending\ on\ Laplace\ Expansion.$</p>
+<p>$ Using\ Cramer’s\ Rule,\ the\ solution\ of\ the\ following\ equation$</p>
+<script type="math/tex; mode=display">
+(\lambda I_n-X)x_k=e_k</script><p>$is$</p>
+<script type="math/tex; mode=display">
+\begin{align*}|x_{kj}|&=((\lambda I_n-X)^{-1}e_k)_j\\&=(\sum_{k=1}^{n}\frac{x_kx_k^T}{\lambda-\lambda_k})_j\\&=\sum_{k=1}^n\frac{|x_{kj}|^2}{\lambda-\lambda_k}.\end{align*}</script><p>$Thus$</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+\frac{\det(\lambda I_{n-1}-Y_j)}{\det(\lambda I_n-X)}&=\frac{\det(\lambda I_{n}-X_j)}{\det(\lambda I_n-X)}\\&=\sum_{k=1}^n\frac{|x_{kj}|^2}{\lambda-\lambda_k}.
+\end{align*}</script><h4 id="c"><a href="#c" class="headerlink" title="(c)"></a>(c)</h4><p>$The\ eigenvalue\ of\ \lambda I_{n-1}-Y_j\ is\ \lambda-\lambda_k(Y_j)\ and\ the\ eigenvalue\ of\ \lambda I_{n}-X\ is\ \lambda-\lambda_k(X).$</p>
+<script type="math/tex; mode=display">
+\frac{\Pi_{k=1}^{n-1}(\lambda-\lambda_k(Y_j))}{\Pi_{k=1}^n(\lambda-\lambda_k(X))}=\sum_{k=1}^n\frac{|x_{kj}|^2}{\lambda-\lambda_k}</script><p>$for\ the\ determinant\ is\ equal\ to\ the\ product\ of\ all\ eigenvalues.$</p>
+<h4 id="d"><a href="#d" class="headerlink" title="(d)"></a>(d)</h4><script type="math/tex; mode=display">
+(\lambda-\lambda_i(X))\frac{\Pi_{k=1}^{n-1}(\lambda-\lambda_k(Y_j))}{\Pi_{k=1}^n(\lambda-\lambda_k(X))}=(\lambda-\lambda_i(X))\sum_{k=1}^n\frac{|x_{kj}|^2}{\lambda-\lambda_k(X)}</script><script type="math/tex; mode=display">
+\frac{\Pi_{k=1}^{n-1}(\lambda-\lambda_k(Y_j))}{\Pi_{k=1,k\neq i}^n(\lambda-\lambda_k(X))}=|x_{ij}|^2+\sum_{k=1,k\neq i}^n|x_{kj}|^2\frac{\lambda-\lambda_i(X)}{\lambda-\lambda_k(X)}</script><script type="math/tex; mode=display">
+\Pi_{k=1}^{n-1}(\lambda_i(X)-\lambda_k(Y_j))=|x_{ij}|^2\Pi_{k=1,k\neq i}^n(\lambda_i(X)-\lambda_k(X)),\ where\ \lambda=\lambda_i(X).</script>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://tkfblog.com/post/718acd86.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -259,7 +743,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/post/718acd86.html" itemprop="url">Hash</a></h1>
+                <a class="post-title-link" href="/post/718acd86.html" itemprop="url">散列表</a></h1>
         
 
         <div class="post-meta">
@@ -294,8 +778,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">Algorithm</span>
+                  <a href="/categories/ALG/" itemprop="url" rel="index">
+                    <span itemprop="name">ALG</span>
                   </a>
                 </span>
 
@@ -565,7 +1049,7 @@ E[\frac{1}{n} \sum_{i=1}^{n}(1+\sum_{j = i+1}^{n}X_{ij})]=&\frac 1 n\sum_{i=1}^{
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/post/83dcefb7.html" itemprop="url">1</a></h1>
+                <a class="post-title-link" href="/post/83dcefb7.html" itemprop="url">线性代数综合问题(1)</a></h1>
         
 
         <div class="post-meta">
@@ -600,8 +1084,8 @@ E[\frac{1}{n} \sum_{i=1}^{n}(1+\sum_{j = i+1}^{n}X_{ij})]=&\frac 1 n\sum_{i=1}^{
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linear/" itemprop="url" rel="index">
-                    <span itemprop="name">Linear</span>
+                  <a href="/categories/Math/" itemprop="url" rel="index">
+                    <span itemprop="name">Math</span>
                   </a>
                 </span>
 
@@ -639,7 +1123,8 @@ E[\frac{1}{n} \sum_{i=1}^{n}(1+\sum_{j = i+1}^{n}X_{ij})]=&\frac 1 n\sum_{i=1}^{
       
         
           
-            <h2 id="设Q是实正交阵且-det-Q-1-，证明：存在实反对称阵A使得Q-e-A"><a href="#设Q是实正交阵且-det-Q-1-，证明：存在实反对称阵A使得Q-e-A" class="headerlink" title="设Q是实正交阵且$\det Q=1$，证明：存在实反对称阵A使得Q=e^A."></a>设Q是实正交阵且$\det Q=1$，证明：存在实反对称阵A使得Q=e^A.</h2><p>引理1.设$A\in M_n(\mathbb R)$，$AA^T=A^TA$，求证：存在实正交阵Q使得</p>
+            <h2 id="设Q是实正交阵且-det-Q-1-，证明：存在实反对称阵A使得Q-e-A"><a href="#设Q是实正交阵且-det-Q-1-，证明：存在实反对称阵A使得Q-e-A" class="headerlink" title="设Q是实正交阵且$\det Q=1$，证明：存在实反对称阵A使得Q=e^A."></a>设Q是实正交阵且$\det Q=1$，证明：存在实反对称阵A使得Q=e^A.</h2><p>一道作业题~</p>
+<p>引理1.设$A\in M_n(\mathbb R)$，$AA^T=A^TA$，求证：存在实正交阵Q使得</p>
 <script type="math/tex; mode=display">
 Q^TAQ=diag(\begin{bmatrix} a_1 & -b_1 \\  b_1 & a_1\end{bmatrix},\cdots,\begin{bmatrix} a_k & -b_k \\  b_k & a_k\end{bmatrix},\lambda_{2k+1},\cdots,\lambda_n),</script><p>其中$a_j,b_j,\lambda_l\in \mathbb R,b_j\neq 0.$</p>
 <p>(1)n=1时，令Q=1即可；n=2时，分两种情况讨论：</p>
@@ -951,7 +1436,7 @@ Maximum=B\log_2(1+S/N)(bps)</script><p>热噪声取决于很多因素，例如�
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -962,7 +1447,7 @@ Maximum=B\log_2(1+S/N)(bps)</script><p>热噪声取决于很多因素，例如�
               
               <div class="site-state-item site-state-categories">
                 
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">categories</span>
                 
               </div>

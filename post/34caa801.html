@@ -72,7 +72,7 @@
 
 
 
-  <meta name="keywords" content="[object Object]," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -85,17 +85,19 @@
 
 
 
-<meta name="description" content="散列表(hash table)维护了一个符号表，其中元素的关键字为任意字符串，它与程序中的标识符相对应。散列表可实现多种字典操作，包括查找(search)，插入(insert)和删除(delete)等。 直接寻址表对于较小的全域U，默认没有两个元素有相同的关键字，应用直接寻址表(direct-address table)实现多种字典操作。对于某些应用，直接寻址表本身可以存放动态集合中的元素，即不把">
+<meta name="description" content="12345678910111213141516171819202122#include&lt;iostream&gt;#include&lt;string.h&gt;using namespace std;#define MAXN 10000int N &#x3D; 0, k &#x3D; 0;int visit[MAXN], prime[MAXN];void Sieve()&amp;#123;    memset(visi">
 <meta property="og:type" content="article">
-<meta property="og:title" content="散列表">
-<meta property="og:url" content="http://tkfblog.com/post/718acd86.html">
+<meta property="og:title" content="埃拉托斯特尼筛法">
+<meta property="og:url" content="http://tkfblog.com/post/34caa801.html">
 <meta property="og:site_name" content="TKF">
-<meta property="og:description" content="散列表(hash table)维护了一个符号表，其中元素的关键字为任意字符串，它与程序中的标识符相对应。散列表可实现多种字典操作，包括查找(search)，插入(insert)和删除(delete)等。 直接寻址表对于较小的全域U，默认没有两个元素有相同的关键字，应用直接寻址表(direct-address table)实现多种字典操作。对于某些应用，直接寻址表本身可以存放动态集合中的元素，即不把">
+<meta property="og:description" content="12345678910111213141516171819202122#include&lt;iostream&gt;#include&lt;string.h&gt;using namespace std;#define MAXN 10000int N &#x3D; 0, k &#x3D; 0;int visit[MAXN], prime[MAXN];void Sieve()&amp;#123;    memset(visi">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-05-12T04:56:56.000Z">
-<meta property="article:modified_time" content="2020-05-19T03:26:43.635Z">
+<meta property="article:published_time" content="2020-05-19T00:57:04.000Z">
+<meta property="article:modified_time" content="2020-05-19T13:25:40.686Z">
 <meta property="article:author" content="TKF">
-<meta property="article:tag" content="[object Object]">
+<meta property="article:tag" content="Algorithms">
+<meta property="article:tag" content=" Networks">
+<meta property="article:tag" content=" Systems">
 <meta name="twitter:card" content="summary">
 
 
@@ -126,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="http://tkfblog.com/post/718acd86.html"/>
+  <link rel="canonical" href="http://tkfblog.com/post/34caa801.html"/>
 
 
 
 
 
-  <title>散列表 | TKF</title>
+  <title>埃拉托斯特尼筛法 | TKF</title>
   
 
 
@@ -239,7 +241,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://tkfblog.com/post/718acd86.html">
+    <link itemprop="mainEntityOfPage" href="http://tkfblog.com/post/34caa801.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="TKF">
@@ -256,7 +258,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">散列表</h1>
+          <h1 class="post-title" itemprop="name headline">埃拉托斯特尼筛法</h1>
         
 
         <div class="post-meta">
@@ -268,8 +270,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-12T12:56:56+08:00">
-                2020-05-12
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-19T08:57:04+08:00">
+                2020-05-19
               </time>
             
 
@@ -328,31 +330,43 @@
       
 
       
-        <p><strong>散列表</strong>(hash table)维护了一个符号表，其中元素的关键字为任意字符串，它与程序中的标识符相对应。散列表可实现多种字典操作，包括<strong>查找</strong>(search)，<strong>插入</strong>(insert)和<strong>删除</strong>(delete)等。</p>
-<h3 id="直接寻址表"><a href="#直接寻址表" class="headerlink" title="直接寻址表"></a>直接寻址表</h3><p>对于较小的全域U，默认没有两个元素有相同的关键字，应用直接寻址表(direct-address table)实现多种字典操作。对于某些应用，直接寻址表本身可以存放动态集合中的元素，即不把某个元素的关键字及卫星数据都放在直接寻址表外部的一个对象中，再由表中某个槽的指针指向该对象，而是直接把该对象存放在表的槽中，从而节省空间。</p>
-<h3 id="散列表"><a href="#散列表" class="headerlink" title="散列表"></a>散列表</h3><p>为了解决直接寻址技术对于存储空间的浪费，利用<strong>散列函数</strong>(hash function)，由关键字计算出槽的位置，这里函数h将关键字的全域映射到散列表的槽位上：</p>
+        <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 10000</span></span><br><span class="line"><span class="keyword">int</span> N = <span class="number">0</span>, k = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> visit[MAXN], prime[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Sieve</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(visit, <span class="number">0</span>, <span class="keyword">sizeof</span>(visit));</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= N; i++)</span><br><span class="line">        <span class="keyword">if</span>(!visit[i])&#123;</span><br><span class="line">            prime[k++] = i;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = i * <span class="number">2</span>; j &lt;= N; j += i)</span><br><span class="line">                visit[j] = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; N;</span><br><span class="line">    Sieve();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k; i++)</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; prime[i] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对于查找0~n范围内的素数，时间复杂度为</p>
 <script type="math/tex; mode=display">
-h:U\rightarrow \{0, 1, \cdots, m-1 \}</script><p>一般情况下，$\mid T\mid &lt;&lt; \mid  U\mid$，散列函数缩小了数组下标的范围，即减小了数组下标的大小，使其由$\mid U\mid$减小为m。</p>
-<p>两个关键字可能会映射到同一个槽中，称这种情形为<strong>冲突</strong>(collision)。通过增强h的随机性来尽可能地减少冲突，但不可能完全地避免冲突，因此我们需要关注两个方面：设计合适的散列函数，及时解决可能出现的冲突。</p>
-<h4 id="链接法"><a href="#链接法" class="headerlink" title="链接法"></a>链接法</h4><p>把散列到同一槽中的元素都放在一个链表中，这样在进行查找，插入和删除操作时，只需要找到关键字对应的链表，并在线性时间内完成操作。链表一般采用双向链接来降低删除操作的时间。</p>
-<p>给定一个能存放n个元素的，具有m个槽位的散列表T，定义T的装载因子(load factor)$\alpha=\frac{n}{m}$，即一个链的平均存储元素数目。用链接法散列的最坏性能为$\mathbb{O}(n)$，但实际情况下效果很好。散列方法的平均性能则取决于所选的散列函数h将关键字集合分布在槽上的均匀程度，这里先假定任何一个给定元素等可能地散列到m个槽位中的任何一个，且与其他元素被散列到什么位置上无关，称这个假设为<strong>简单均匀散列</strong>(simple uniform hashing)。</p>
-<p>对于$j=0,1,\cdots,m-1$，列表的长度$T[j]$用$n_j$表示，于是有$n=n_0+n_1+\cdots+n_{m-1}$，并且$n_j$的期望值为$E[n_j]=\alpha=\frac{n}{m}$。</p>
-<p><strong>在简单均匀散列的假设下，对于用链接法解决冲突的散列表，一次查找的平均时间为$\Theta(1+\alpha)$</strong></p>
-<p>当查找一个关键字k时，在不成功的情况下，需要对整个链表进行遍历，期望时间与期望长度一致，故所需要的总时间为$\Theta(1+\alpha)$。</p>
-<p>假定要查找的元素是链表中存放的n个元素中等可能的任何一个，由于链表中新的元素在头部插入，所以出现在x之前的元素都是在x之后插入的，定义指示器随机变量$X_{ij}=I\ {h(k_i)=h(k_j)\ }$，在简单随机序列的假设下，$Pr\ {h(k_i) = h(k_j)\ }=\frac{1}{m}$，从而有$E\ [X_ {ij}\ ] = \frac{1}{m}$，于是，在一次成功查找中，所检查元素的期望数目为</p>
+\sum_{p\leqslant n}(\lfloor \frac n{p}\rfloor - 1)=O(n\sum_{p\leqslant n}\frac1p)=O(n\ln\ln n).</script><h3 id="复杂度证明"><a href="#复杂度证明" class="headerlink" title="复杂度证明"></a>复杂度证明</h3><p>Original Proof较为繁琐，我们这里只给出相对简便易懂的证明。</p>
+<p>应用阿贝尔求和公式(Abel Summation)：</p>
+<script type="math/tex; mode=display">
+\sum_{y<r\leqslant x}a(r)f(r) = A(x)f(x)-A(y)f(y)-\int_y^xA(t)f'(t)dt</script><p>其中$A(x)=\sum_  {r\leqslant x}a(r)$。</p>
+<p>引入素数计数函数：</p>
+<script type="math/tex; mode=display">
+\pi(x)=The\ number\ of\ prime\ numbers\ smaller\ than\ x</script><p>及素数特征函数：</p>
+<script type="math/tex; mode=display">
+a(r)=\left\{
+\begin{aligned}
+1\quad&r=p,\\0\quad&r\neq p.
+\end{aligned}
+\right.</script><p>令$f(r)=\frac 1 r，y=2$，可得</p>
+<script type="math/tex; mode=display">
+\sum_{p\leqslant x}\frac 1 p=\frac{\pi(x)}{x}+\int_2^x\frac{\pi(t)}{t^2}dt</script><p>引入素数特征函数：</p>
+<script type="math/tex; mode=display">
+a(r)=\left\{
+\begin{aligned}
+&\frac{\ln(p)} p\quad&r=p,\\&\quad0\quad&r\neq p.
+\end{aligned}
+\right.</script><p>得到</p>
+<script type="math/tex; mode=display">
+A(x)=\sum_{p\leqslant x}\frac{\ln p}p</script><p>令$f(r)=\frac{1}{\ln r}，y=2$，可得</p>
+<script type="math/tex; mode=display">
+\sum_{p\leqslant x}\frac 1 p=\frac{A(x)}{\ln x}+\int_2^x\frac{A(t)}{t(\ln t)^2}dt</script><p>我们有</p>
+<script type="math/tex; mode=display">
+\sum_{p\leqslant x}\frac{\ln p}p=\ln x+R(x),\ |R(x)| < 2</script><p>（具体证明见<a href="https://cloud.tsinghua.edu.cn/f/79acaf89175f4b9b8e0c/" target="_blank" rel="noopener">$Mertens’Theorem$</a>）</p>
+<p>代入上述等式可得</p>
 <script type="math/tex; mode=display">
 \begin{align*}
-E[\frac{1}{n} \sum_{i=1}^{n}(1+\sum_{j = i+1}^{n}X_{ij})]=&\frac 1 n\sum_{i=1}^{n}(1+\sum_{j=i+1}^{n}E[X_{ij}])\\
-=&1+\frac 1 {nm}\sum_{i=1}^{n}(n-i)\\
-=&1+\frac1{mn}(n^2-\frac{n(n+1)} 2)\\
-=&1+\frac{n-1}{2m}\\
-=&1+\frac\alpha2-\frac\alpha{2n}
-\end{align*}</script><p>故一次查找成功所需呀的期望时间为$\Theta(2+\alpha/2-\alpha/2n)=\Theta(1+\alpha)$。</p>
-<h3 id="散列函数"><a href="#散列函数" class="headerlink" title="散列函数"></a>散列函数</h3><p>在实际应用中，常常可以运用启发式方法来构造性能好的散列函数。设计过程中，可以利用关键字分布的有用信息。一种好的方法导出的散列值，在某种程度上应独立于数据可能存在的任何模式，而且散列函数的某些应用可能会要求比简单均匀随机序列更强的性质，即完全区分很相近的关键字。</p>
-<p>多数散列函数都假定关键字的全域为自然数集，因此，如果所给关键字不是自然数，就需要找到一种方法来将它们转化为自然数。</p>
-<p><strong>除法散列法</strong>    通过取k除以m的余数，将关键字k映射到m个槽位中的某一个上，即散列函数为$h(k)=k\ mod\ m$，一般情况下，m选择不接近2的整数幂的素数。</p>
-<p>乘法散列法    构造散列函数的乘法散列法包括两个步骤，第一步，用关键字k乘上常数A(0&lt;A&lt;1)，并提取A的小数部分，第二步，用m乘以这个值，再向下取整，即散列函数为$h(k)$=\lfloor m(kA \mod 1)\rfloor。</p>
-
+\sum_{p\leqslant x}\frac 1 p&=\frac{\ln x+R(x)}{\ln x}+\int_2^x\frac{\ln t+R(t)}{t(\ln t)^2}dt\\&=1+\frac{R(x)}{\ln x}+\int_2^x\frac{1}{t\ln t}dt+\int_2^x\frac{R(t)}{t(\ln t)^2}dt\\&<1+\frac{2}{\ln x}+\ln\ln x-\ln \ln 2+\int_2^x2d(-\frac{1}{\ln t})\\&=\ln \ln x+1+\frac{2}{\ln 2}-\ln\ln2.
+\end{align*}</script><p>易得</p>
+<script type="math/tex; mode=display">
+\sum_{p\geqslant 2}^{n}\frac1p=O(\ln\ln n)</script>
       
     </div>
     
@@ -367,12 +381,6 @@ E[\frac{1}{n} \sum_{i=1}^{n}(1+\sum_{j = i+1}^{n}X_{ij})]=&\frac 1 n\sum_{i=1}^{
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/object-Object/" rel="tag"># [object Object]</a>
-          
-        </div>
-      
 
       
       
@@ -382,8 +390,8 @@ E[\frac{1}{n} \sum_{i=1}^{n}(1+\sum_{j = i+1}^{n}X_{ij})]=&\frac 1 n\sum_{i=1}^{
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/post/cca1b543.html" rel="next" title="词频统计">
-                <i class="fa fa-chevron-left"></i> 词频统计
+              <a href="/post/498cfd8e.html" rel="next" title="并发编程">
+                <i class="fa fa-chevron-left"></i> 并发编程
               </a>
             
           </div>
@@ -391,10 +399,6 @@ E[\frac{1}{n} \sum_{i=1}^{n}(1+\sum_{j = i+1}^{n}X_{ij})]=&\frac 1 n\sum_{i=1}^{
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/post/9fdad6da.html" rel="prev" title="线性代数综合问题(2)">
-                线性代数综合问题(2) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -537,7 +541,7 @@ E[\frac{1}{n} \sum_{i=1}^{n}(1+\sum_{j = i+1}^{n}X_{ij})]=&\frac 1 n\sum_{i=1}^{
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#直接寻址表"><span class="nav-number">1.</span> <span class="nav-text">直接寻址表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#散列表"><span class="nav-number">2.</span> <span class="nav-text">散列表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#链接法"><span class="nav-number">2.1.</span> <span class="nav-text">链接法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#散列函数"><span class="nav-number">3.</span> <span class="nav-text">散列函数</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#复杂度证明"><span class="nav-number">1.</span> <span class="nav-text">复杂度证明</span></a></li></ol></div>
             
 
           </div>
@@ -685,7 +689,7 @@ E[\frac{1}{n} \sum_{i=1}^{n}(1+\sum_{j = i+1}^{n}X_{ij})]=&\frac 1 n\sum_{i=1}^{
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
 
 
 
@@ -738,6 +742,26 @@ E[\frac{1}{n} \sum_{i=1}^{n}(1+\sum_{j = i+1}^{n}X_{ij})]=&\frac 1 n\sum_{i=1}^{
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
