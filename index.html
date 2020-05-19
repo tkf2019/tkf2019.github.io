@@ -240,6 +240,148 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://tkfblog.com/post/1ad5be0d.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="TKF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/TKF.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TKF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/post/1ad5be0d.html" itemprop="url">2</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-19T23:02:44+08:00">
+                2020-05-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="/post/Hexo\source\_posts\2\Linear_1.jpg" alt="同学的考试题~"></p>
+<h4 id="a"><a href="#a" class="headerlink" title="(a)"></a>(a)</h4><p>$Multiple\ RHS\ by\ \lambda I_n-X$</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+\sum_{k=1}^{n}\frac{(\lambda I_n-X)x_kx_k^T}{\lambda-\lambda_k}&=\sum_{k=1}^{n}\frac{\lambda x_kx_k^T-\lambda_k x_kx_k^T}{\lambda-\lambda_k}\\&=\sum_{k=1}^{n}x_kx_k^T\\&=I_n
+\end{align*}</script><p>$Similarly,\ for\ X\ is\ symmetric$</p>
+<script type="math/tex; mode=display">
+\sum_{k=1}^{n}\frac{x_kx_k^T(\lambda I_n-X)}{\lambda-\lambda_k}=I_n</script><h4 id="b"><a href="#b" class="headerlink" title="(b)"></a>(b)</h4><p>$Suppose\ a\ matrix\ X_j\ which\ satisfies\ \lambda I_n-X_j\ is\ the\ matrix\ \lambda I_n-X\ changing\ its\ jth\ column\ into\ the\ base\ vector\ e_j.\ $</p>
+<p>$Then\ \det(\lambda I_{n-1}-Y_j)=\det(\lambda I_n-X_j),\ depending\ on\ Laplace\ Expansion.$</p>
+<p>$ Using\ Cramer’s\ Rule,\ the\ solution\ of\ the\ following\ equation$</p>
+<script type="math/tex; mode=display">
+(\lambda I_n-X)x_k=e_k</script><p>$is$</p>
+<script type="math/tex; mode=display">
+\begin{align*}|x_{kj}|&=((\lambda I_n-X)^{-1}e_k)_j\\&=(\sum_{k=1}^{n}\frac{x_kx_k^T}{\lambda-\lambda_k})_j\\&=\sum_{k=1}^n\frac{|x_{kj}|^2}{\lambda-\lambda_k}.\end{align*}</script><p>$Thus$</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+\frac{\det(\lambda I_{n-1}-Y_j)}{\det(\lambda I_n-X)}&=\frac{\det(\lambda I_{n}-X_j)}{\det(\lambda I_n-X)}\\&=\sum_{k=1}^n\frac{|x_{kj}|^2}{\lambda-\lambda_k}.
+\end{align*}</script><h4 id="c"><a href="#c" class="headerlink" title="(c)"></a>(c)</h4><p>$The\ eigenvalue\ of\ \lambda I_{n-1}-Y_j\ is\ \lambda-\lambda_k(Y_j)\ and\ the\ eigenvalue\ of\ \lambda I_{n}-X\ is\ \lambda-\lambda_k(X).$</p>
+<script type="math/tex; mode=display">
+\frac{\Pi_{k=1}^{n-1}(\lambda-\lambda_k(Y_j))}{\Pi_{k=1}^n(\lambda-\lambda_k(X))}=\sum_{k=1}^n\frac{|x_{kj}|^2}{\lambda-\lambda_k}</script><p>$for\ the\ determinant\ is\ equal\ to\ the\ product\ of\ all\ eigenvalues.$</p>
+<h4 id="d"><a href="#d" class="headerlink" title="(d)"></a>(d)</h4><script type="math/tex; mode=display">
+(\lambda-\lambda_i(X))\frac{\Pi_{k=1}^{n-1}(\lambda-\lambda_k(Y_j))}{\Pi_{k=1}^n(\lambda-\lambda_k(X))}=(\lambda-\lambda_i(X))\sum_{k=1}^n\frac{|x_{kj}|^2}{\lambda-\lambda_k(X)}</script><script type="math/tex; mode=display">
+\frac{\Pi_{k=1}^{n-1}(\lambda-\lambda_k(Y_j))}{\Pi_{k=1,k\neq i}^n(\lambda-\lambda_k(X))}=|x_{ij}|^2+\sum_{k=1,k\neq i}^n|x_{kj}|^2\frac{\lambda-\lambda_i(X)}{\lambda-\lambda_k(X)}</script><script type="math/tex; mode=display">
+\Pi_{k=1}^{n-1}(\lambda_i(X)-\lambda_k(Y_j))=|x_{ij}|^2\Pi_{k=1,k\neq i}^n(\lambda_i(X)-\lambda_k(X)),\ where\ \lambda=\lambda_i(X).</script>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://tkfblog.com/post/34caa801.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -652,7 +794,7 @@ A(x)=\sum_{p\leqslant x}\frac{\ln p}p</script><p>令$f(r)=\frac{1}{\ln r}，y=2$
       
         
           
-            <p><img src="[9fdad6da](https://github.com/tkf2019/tkf2019.github.io/tree/master/post/9fdad6da" alt="Linear_1">/Linear_1.jpg)</p>
+            <p><img src="/post/Hexo\source\_posts\线性代数综合问题(2" alt="同学的考试题~">\Linear_1.jpg)</p>
 <h4 id="a"><a href="#a" class="headerlink" title="(a)"></a>(a)</h4><p>$Multiple\ RHS\ by\ \lambda I_n-X$</p>
 <script type="math/tex; mode=display">
 \begin{align*}
@@ -1435,7 +1577,7 @@ Maximum=B\log_2(1+S/N)(bps)</script><p>热噪声取决于很多因素，例如�
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
