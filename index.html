@@ -240,7 +240,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://tkfblog.com/post/1ad5be0d.html">
+    <link itemprop="mainEntityOfPage" href="http://tkfblog.com/post/cca1b543.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="TKF">
@@ -259,7 +259,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/post/1ad5be0d.html" itemprop="url">2</a></h1>
+                <a class="post-title-link" href="/post/cca1b543.html" itemprop="url">词频统计</a></h1>
         
 
         <div class="post-meta">
@@ -271,8 +271,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-19T23:02:44+08:00">
-                2020-05-19
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-21T12:01:17+08:00">
+                2020-05-21
               </time>
             
 
@@ -281,6 +281,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Project/" itemprop="url" rel="index">
+                    <span itemprop="name">Project</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -311,30 +333,27 @@
       
         
           
-            <p><img src="/post/Hexo\source\_posts\2\Linear_1.jpg" alt="同学的考试题~"></p>
-<h4 id="a"><a href="#a" class="headerlink" title="(a)"></a>(a)</h4><p>$Multiple\ RHS\ by\ \lambda I_n-X$</p>
+            <p>小项目时间耗费10h+，中间出现了大量的问题，主要由于不太熟悉C语言，很多流操作和内存操作用起来十分生涩。</p>
+<h3 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h3><p>项目要求为给定四个文档，词典文档dictionary.txt，停用词词典文档stopwords.txt，两篇文章article1.txt和article2.txt。要求分为如下几项：</p>
+<p>1.读入词典；2.读入文章；3.对文章中的每个单词进行判断并记录出现次数；4.对两篇文章的词频进行排序；5.在一定范围两篇文章中排好序的单词中寻找同时出现的单词作为文章相似度的指标。</p>
+<h3 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h3><h4 id="Trie树"><a href="#Trie树" class="headerlink" title="Trie树"></a>Trie树</h4><p>先根据读入的词典建立Trie树，并针对停用词词典中的词进行删除。单词长度有限，所以每次查找可近似看为O(1)的时间复杂度。具体实现代码如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">TWord* _new_tword_alloc()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">    TWord* p = (TWord*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(TWord));</span><br><span class="line">    p-&gt;isword = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(; i &lt; <span class="number">26</span>; i++) </span><br><span class="line">        p-&gt;ptr[i] = <span class="literal">NULL</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> p;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">void</span> _build_file(FILE* fp)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">char</span> dic_word[MAX_WORD_SIZE];</span><br><span class="line">    <span class="keyword">char</span> *<span class="keyword">word</span>;</span><br><span class="line">    TWord *p;</span><br><span class="line">    _root = _new_tword_alloc();</span><br><span class="line">    <span class="comment">//build a Trie Tree</span></span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">fscanf</span>(fp, <span class="string">"%s"</span>, dic_word) != EOF)&#123;</span><br><span class="line">        <span class="keyword">word</span> = dic_word;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(p = _root; *<span class="keyword">word</span> != <span class="string">'\0'</span>; <span class="keyword">word</span>++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(p-&gt;ptr[*<span class="keyword">word</span> - <span class="string">'a'</span>] == <span class="literal">NULL</span>)</span><br><span class="line">                p-&gt;ptr[*<span class="keyword">word</span> - <span class="string">'a'</span>] = _new_tword_alloc();</span><br><span class="line">            p = p-&gt;ptr[*<span class="keyword">word</span> - <span class="string">'a'</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//final letter is the end of a word in dictionary</span></span><br><span class="line">        p-&gt;isword = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">rbuild</span><span class="params">(FILE* fp)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> stop_word[MAX_WORD_SIZE];</span><br><span class="line">    <span class="keyword">char</span> *<span class="keyword">word</span>;</span><br><span class="line">    TWord *p;</span><br><span class="line">    <span class="comment">//delete the stop_word showing up in the dictionary</span></span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">fscanf</span>(fp, <span class="string">"%s"</span>, stop_word) != EOF)&#123;</span><br><span class="line">        <span class="keyword">word</span> = stop_word;</span><br><span class="line">        <span class="keyword">for</span>(p = _root; p!= <span class="literal">NULL</span> &amp;&amp; *<span class="keyword">word</span> != <span class="string">'\0'</span>; <span class="keyword">word</span>++)</span><br><span class="line">			p = p-&gt;ptr[*<span class="keyword">word</span> - <span class="string">'a'</span>];</span><br><span class="line">		<span class="keyword">if</span>(p != <span class="literal">NULL</span>)</span><br><span class="line">			p-&gt;isword = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">search</span><span class="params">(<span class="keyword">char</span> *w, TWord* root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	TWord *l = root;</span><br><span class="line">	<span class="keyword">while</span>(l != <span class="literal">NULL</span>)&#123;</span><br><span class="line">		<span class="keyword">if</span>(*w == <span class="string">'\0'</span>)</span><br><span class="line">			<span class="keyword">return</span> l-&gt;isword;</span><br><span class="line">		l = l-&gt;ptr[*w - <span class="string">'a'</span>];</span><br><span class="line">		w++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="散列表"><a href="#散列表" class="headerlink" title="散列表"></a>散列表</h4><p>应用散列表，选取512作为映射集合的基数，关键字散列函数表示为：</p>
 <script type="math/tex; mode=display">
-\begin{align*}
-\sum_{k=1}^{n}\frac{(\lambda I_n-X)x_kx_k^T}{\lambda-\lambda_k}&=\sum_{k=1}^{n}\frac{\lambda x_kx_k^T-\lambda_k x_kx_k^T}{\lambda-\lambda_k}\\&=\sum_{k=1}^{n}x_kx_k^T\\&=I_n
-\end{align*}</script><p>$Similarly,\ for\ X\ is\ symmetric$</p>
-<script type="math/tex; mode=display">
-\sum_{k=1}^{n}\frac{x_kx_k^T(\lambda I_n-X)}{\lambda-\lambda_k}=I_n</script><h4 id="b"><a href="#b" class="headerlink" title="(b)"></a>(b)</h4><p>$Suppose\ a\ matrix\ X_j\ which\ satisfies\ \lambda I_n-X_j\ is\ the\ matrix\ \lambda I_n-X\ changing\ its\ jth\ column\ into\ the\ base\ vector\ e_j.\ $</p>
-<p>$Then\ \det(\lambda I_{n-1}-Y_j)=\det(\lambda I_n-X_j),\ depending\ on\ Laplace\ Expansion.$</p>
-<p>$ Using\ Cramer’s\ Rule,\ the\ solution\ of\ the\ following\ equation$</p>
-<script type="math/tex; mode=display">
-(\lambda I_n-X)x_k=e_k</script><p>$is$</p>
-<script type="math/tex; mode=display">
-\begin{align*}|x_{kj}|&=((\lambda I_n-X)^{-1}e_k)_j\\&=(\sum_{k=1}^{n}\frac{x_kx_k^T}{\lambda-\lambda_k})_j\\&=\sum_{k=1}^n\frac{|x_{kj}|^2}{\lambda-\lambda_k}.\end{align*}</script><p>$Thus$</p>
-<script type="math/tex; mode=display">
-\begin{align*}
-\frac{\det(\lambda I_{n-1}-Y_j)}{\det(\lambda I_n-X)}&=\frac{\det(\lambda I_{n}-X_j)}{\det(\lambda I_n-X)}\\&=\sum_{k=1}^n\frac{|x_{kj}|^2}{\lambda-\lambda_k}.
-\end{align*}</script><h4 id="c"><a href="#c" class="headerlink" title="(c)"></a>(c)</h4><p>$The\ eigenvalue\ of\ \lambda I_{n-1}-Y_j\ is\ \lambda-\lambda_k(Y_j)\ and\ the\ eigenvalue\ of\ \lambda I_{n}-X\ is\ \lambda-\lambda_k(X).$</p>
-<script type="math/tex; mode=display">
-\frac{\Pi_{k=1}^{n-1}(\lambda-\lambda_k(Y_j))}{\Pi_{k=1}^n(\lambda-\lambda_k(X))}=\sum_{k=1}^n\frac{|x_{kj}|^2}{\lambda-\lambda_k}</script><p>$for\ the\ determinant\ is\ equal\ to\ the\ product\ of\ all\ eigenvalues.$</p>
-<h4 id="d"><a href="#d" class="headerlink" title="(d)"></a>(d)</h4><script type="math/tex; mode=display">
-(\lambda-\lambda_i(X))\frac{\Pi_{k=1}^{n-1}(\lambda-\lambda_k(Y_j))}{\Pi_{k=1}^n(\lambda-\lambda_k(X))}=(\lambda-\lambda_i(X))\sum_{k=1}^n\frac{|x_{kj}|^2}{\lambda-\lambda_k(X)}</script><script type="math/tex; mode=display">
-\frac{\Pi_{k=1}^{n-1}(\lambda-\lambda_k(Y_j))}{\Pi_{k=1,k\neq i}^n(\lambda-\lambda_k(X))}=|x_{ij}|^2+\sum_{k=1,k\neq i}^n|x_{kj}|^2\frac{\lambda-\lambda_i(X)}{\lambda-\lambda_k(X)}</script><script type="math/tex; mode=display">
-\Pi_{k=1}^{n-1}(\lambda_i(X)-\lambda_k(Y_j))=|x_{ij}|^2\Pi_{k=1,k\neq i}^n(\lambda_i(X)-\lambda_k(X)),\ where\ \lambda=\lambda_i(X).</script>
+H(string)=(\sum_{each\ c\in string}ASCII\ number\ of\ c)\ mod\ 512</script><p>有限全域取决于词典规模，查找操作时间复杂度可降低至O(n)，具体实现代码如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">LWord* _new_lword_alloc(<span class="keyword">char</span>* <span class="keyword">word</span>)</span><br><span class="line">&#123;</span><br><span class="line">    LWord* p = (LWord*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(LWord));</span><br><span class="line">    <span class="built_in">strcpy</span>(p-&gt;<span class="keyword">word</span>, <span class="keyword">word</span>);</span><br><span class="line">    p-&gt;num = <span class="number">1</span>;</span><br><span class="line">    p-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">hash</span><span class="params">(<span class="keyword">char</span>* <span class="keyword">word</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> Hash = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(*<span class="keyword">word</span> != <span class="string">'\0'</span>)</span><br><span class="line">        Hash += *<span class="keyword">word</span>++;</span><br><span class="line">    <span class="keyword">return</span> Hash &amp; <span class="number">511</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">addWord</span><span class="params">(<span class="keyword">char</span>* <span class="keyword">word</span>, LWord** HASH)</span></span></span><br><span class="line"><span class="function"></span>&#123;   </span><br><span class="line">    <span class="comment">//if(!search(word, _root)) return;</span></span><br><span class="line">    <span class="keyword">int</span> index = hash(<span class="keyword">word</span>);</span><br><span class="line">    <span class="comment">//create a new node if a NULL pointer </span></span><br><span class="line">    <span class="keyword">if</span>(HASH[index] == <span class="literal">NULL</span>)&#123;</span><br><span class="line">        HASH[index] = _new_lword_alloc(<span class="keyword">word</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    LWord* p = HASH[index];</span><br><span class="line">    <span class="comment">//find the word in the list of hash table </span></span><br><span class="line">    <span class="keyword">while</span>(p-&gt;next != <span class="literal">NULL</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!<span class="built_in">strcmp</span>(<span class="keyword">word</span>, p-&gt;<span class="keyword">word</span>))&#123;</span><br><span class="line">            p-&gt;num++;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        p = p-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(!<span class="built_in">strcmp</span>(<span class="keyword">word</span>, p-&gt;<span class="keyword">word</span>))&#123;</span><br><span class="line">        p-&gt;num++;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//failed to find then create a new node</span></span><br><span class="line">    p-&gt;next = _new_lword_alloc(<span class="keyword">word</span>);</span><br><span class="line">    word_num++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>（散列表相关知识请参考<a href>散列表</a>）</p>
+<h4 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h4><p>先开辟内存指向散列表中的单词。建堆操作取决于最初要求的排序范围，利用最小堆对每次读入单词使用堆维护操作，最后利用堆排序得到词频序列，若词典规模为M，排序范围为N，则排序操作的近似时间复杂度为O((M+N)lgN)，具体实现代码如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cmp</span><span class="params">(LWord* w1, LWord* w2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(w1-&gt;num &lt; w2-&gt;num) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(w1-&gt;num == w2-&gt;num)&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">strcmp</span>(w1-&gt;<span class="keyword">word</span>, w2-&gt;<span class="keyword">word</span>) &gt; <span class="number">0</span>) </span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">LWord** <span class="title">Sort</span><span class="params">(LWord** HASH)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(word_num &gt; N) word_num = N;</span><br><span class="line">    <span class="comment">//create new heap to sort</span></span><br><span class="line">    LWord** WORD = (LWord**)<span class="built_in">malloc</span>((word_num + <span class="number">2</span>)*<span class="keyword">sizeof</span>(LWord*));</span><br><span class="line">    WORD[<span class="number">0</span>] = <span class="literal">NULL</span>;</span><br><span class="line">    WORD[word_num + <span class="number">1</span>] = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">    LWord* p;</span><br><span class="line">    <span class="comment">//Build a heap in the size of N</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; index &lt; MAX_INDEX_NUM; index++)&#123;</span><br><span class="line">        p = HASH[index];</span><br><span class="line">        <span class="keyword">while</span>(p != <span class="literal">NULL</span>)&#123;</span><br><span class="line">            WORD[i] = p; </span><br><span class="line">            _up_heapify(WORD, i);</span><br><span class="line">            p = p-&gt;next;</span><br><span class="line">            <span class="keyword">if</span>(++i &gt; N) <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i &gt; N) <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//Use priority queue to change the peak of min_heap</span></span><br><span class="line">    <span class="keyword">for</span>(; index &lt; MAX_INDEX_NUM; index++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(p == <span class="literal">NULL</span>) p = HASH[index];</span><br><span class="line">        <span class="keyword">while</span>(p != <span class="literal">NULL</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(cmp(WORD[<span class="number">1</span>], p))&#123;</span><br><span class="line">                WORD[<span class="number">1</span>] = p;</span><br><span class="line">                _down_heapify(WORD, N);</span><br><span class="line">            &#125;</span><br><span class="line">            p = p-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    heap_sort(WORD);</span><br><span class="line">    <span class="keyword">return</span> WORD;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">void</span> _down_heapify(LWord** WORD, <span class="keyword">int</span> <span class="built_in">size</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">size</span> &lt;= <span class="number">1</span>) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> index = <span class="number">1</span>, halfsize = (<span class="built_in">size</span> &gt;&gt; <span class="number">1</span>);</span><br><span class="line">    LWord *p = WORD[index];</span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)&#123;  </span><br><span class="line">        <span class="keyword">int</span> smallest = index;</span><br><span class="line">        <span class="comment">//find the smallest node in the heap</span></span><br><span class="line">        <span class="keyword">if</span>(cmp(WORD[index &lt;&lt; <span class="number">1</span>], WORD[index]))</span><br><span class="line">            smallest = index &lt;&lt; <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>((index &lt;&lt; <span class="number">1</span>) + <span class="number">1</span> &lt;= <span class="built_in">size</span>)</span><br><span class="line">            <span class="keyword">if</span>(cmp(WORD[(index &lt;&lt; <span class="number">1</span>) + <span class="number">1</span>], WORD[smallest]))</span><br><span class="line">                smallest = (index &lt;&lt; <span class="number">1</span>) + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(smallest == index) <span class="keyword">break</span>;</span><br><span class="line">        <span class="comment">//exchange the node</span></span><br><span class="line">        LWord *tmp = WORD[smallest];</span><br><span class="line">        WORD[smallest] = WORD[index];</span><br><span class="line">        WORD[index] = tmp;</span><br><span class="line">        <span class="keyword">if</span>(smallest == (index &lt;&lt; <span class="number">1</span>))</span><br><span class="line">            index = index &lt;&lt; <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> index = (index &lt;&lt; <span class="number">1</span>) + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(index &gt; halfsize) <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">void</span> _up_heapify(LWord** WORD, <span class="keyword">int</span> index)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(index == <span class="number">1</span>) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">while</span>(cmp(WORD[index], WORD[index &gt;&gt; <span class="number">1</span>]))&#123;</span><br><span class="line">        LWord* tmp = WORD[index &gt;&gt; <span class="number">1</span>];</span><br><span class="line">        WORD[index &gt;&gt; <span class="number">1</span>] = WORD[index];</span><br><span class="line">        WORD[index] = tmp;</span><br><span class="line">        index &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(index &lt;= <span class="number">1</span>) <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">heap_sort</span><span class="params">(LWord** WORD)</span>C</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> index = word_num;</span><br><span class="line">    <span class="keyword">while</span>(index &gt;= <span class="number">1</span>)&#123;</span><br><span class="line">        WORD[index + <span class="number">1</span>] = WORD[<span class="number">1</span>];</span><br><span class="line">        WORD[<span class="number">1</span>] = WORD[index];</span><br><span class="line">        WORD[index] = <span class="literal">NULL</span>;</span><br><span class="line">        index--;</span><br><span class="line">        _down_heapify(WORD, index);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="时间优化"><a href="#时间优化" class="headerlink" title="时间优化"></a>时间优化</h3><h4 id="读入"><a href="#读入" class="headerlink" title="读入"></a>读入</h4><p>对于规模较大的文章，重复的流操作时间开销过大，以临时消耗大量空间为代价，开辟内存将整个文章读入字符串，主要用到了C语言中的流操作函数，中间需要注意malloc的使用，最开始忘记在后面乘以sizeof()导致读入错误，具体实现代码如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">char</span>* <span class="title">input</span><span class="params">(FILE* fp)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    fseek(fp, <span class="number">0L</span>, SEEK_END);</span><br><span class="line">    <span class="keyword">int</span> flen = ftell(fp);</span><br><span class="line">    <span class="keyword">char</span>* <span class="built_in">buffer</span> = (<span class="keyword">char</span>*)<span class="built_in">malloc</span>(flen + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    fseek(fp, <span class="number">0L</span>, SEEK_SET);</span><br><span class="line">    fread(<span class="built_in">buffer</span>, flen, <span class="number">1</span>, fp);</span><br><span class="line">    <span class="built_in">buffer</span>[flen] = <span class="string">'\0'</span>;</span><br><span class="line">  </span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">buffer</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">WordRead</span><span class="params">(<span class="keyword">char</span>* <span class="built_in">buffer</span>, LWord** HASH)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> <span class="keyword">word</span>[MAX_WORD_SIZE];</span><br><span class="line">    <span class="keyword">char</span> c;</span><br><span class="line">    <span class="keyword">int</span> pos = <span class="number">0</span>, delta = <span class="string">'a'</span> - <span class="string">'A'</span>, flag = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">do</span>&#123;</span><br><span class="line">        c = *<span class="built_in">buffer</span>++;</span><br><span class="line">        <span class="keyword">if</span>(c &lt;= <span class="string">'Z'</span> &amp;&amp; c &gt;= <span class="string">'A'</span>)</span><br><span class="line">            c += delta;</span><br><span class="line">        <span class="keyword">if</span>(c &lt; <span class="string">'a'</span> || c &gt; <span class="string">'z'</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(flag)&#123;</span><br><span class="line">                <span class="keyword">word</span>[pos] = <span class="string">'\0'</span>;</span><br><span class="line">                addWord(<span class="keyword">word</span>, HASH);</span><br><span class="line">                pos = <span class="number">0</span>;</span><br><span class="line">                flag = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">word</span>[pos++] = c;</span><br><span class="line">        flag = <span class="number">1</span>;</span><br><span class="line">    &#125;<span class="keyword">while</span>(c != <span class="string">'\0'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里可以使用有限状态机来判断单词内外状态的交替变化，对于字符更加多样的文档，有限状态机将更为使用，此处暂时不表。</p>
+<h4 id="匹配"><a href="#匹配" class="headerlink" title="匹配"></a>匹配</h4><p>对于两个已排好序的字符串集合，如何快速寻找同时在两个集合中出现的字符串？C++STL中的std::map十分好用，但真正实现红黑树费时费力，具体见<a href>RBT</a>。而且对于有限的排序范围，没有必要大动干戈。如何在O(n)的复杂度内比较字符串，注意到字符串的长度是有限的，所以我们仍采用Trie树，具体实现代码如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> _build_list(LWord** LIST)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">char</span> *<span class="keyword">word</span>;</span><br><span class="line">    TWord *p;</span><br><span class="line">    _root_article = _new_tword_alloc();</span><br><span class="line">    <span class="comment">//build a Trie Tree</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; word_num + <span class="number">2</span>; i++)&#123;</span><br><span class="line">        <span class="keyword">word</span> = LIST[i]-&gt;<span class="keyword">word</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(p = _root_article; *<span class="keyword">word</span> != <span class="string">'\0'</span>; <span class="keyword">word</span>++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(p-&gt;ptr[*<span class="keyword">word</span> - <span class="string">'a'</span>] == <span class="literal">NULL</span>)</span><br><span class="line">                p-&gt;ptr[*<span class="keyword">word</span> - <span class="string">'a'</span>] = _new_tword_alloc();</span><br><span class="line">            p = p-&gt;ptr[*<span class="keyword">word</span> - <span class="string">'a'</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//final letter is the end of a word in dictionary</span></span><br><span class="line">        p-&gt;isword += LIST[i]-&gt;num;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">check</span><span class="params">(LWord** LIST_1, LWord** LIST_2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//Again we use the Trie Tree</span></span><br><span class="line">    <span class="comment">//If a word in LIST_2 is also in the Trie built by LIST_1 </span></span><br><span class="line">    _build_list(LIST_1);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> count = <span class="number">0</span>, ret = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; word_num + <span class="number">2</span>; i++)</span><br><span class="line">        <span class="keyword">if</span>(count = search(LIST_2[i]-&gt;<span class="keyword">word</span>, _root_article))&#123;</span><br><span class="line">            freq_1 += count;</span><br><span class="line">            freq_2 += LIST_2[i]-&gt;num;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以上就是项目整体设计思路，其中还有很多优化的细节在此不表，对于规模很大的文件，最终的运行速度不超过2s，以下是针对两篇文章运行后的结果：</p>
+<img src="/post/cca1b543.htm/cca1b543/compare.png" class title="articles">
+<p>《Jane Eyre》中单词出现的频率：</p>
+<img src="/post/cca1b543.htm/cca1b543/JaneEyre.png" class title="JaneEyre">
           
         
       
@@ -794,7 +813,8 @@ A(x)=\sum_{p\leqslant x}\frac{\ln p}p</script><p>令$f(r)=\frac{1}{\ln r}，y=2$
       
         
           
-            <p><img src="/post/Hexo\source\_posts\线性代数综合问题(2" alt="同学的考试题~">\Linear_1.jpg)</p>
+            <p><img src="/post/9fdad6da.htm/Hexo\source\_posts\线性代数综合问题(2" alt="同学的考试题~">\Linear_1.jpg)</p>
+<img src="/post/9fdad6da.htm/9fdad6da/Linear_1.jpg" class title="This is an example image">
 <h4 id="a"><a href="#a" class="headerlink" title="(a)"></a>(a)</h4><p>$Multiple\ RHS\ by\ \lambda I_n-X$</p>
 <script type="math/tex; mode=display">
 \begin{align*}
@@ -981,149 +1001,8 @@ E[\frac{1}{n} \sum_{i=1}^{n}(1+\sum_{j = i+1}^{n}X_{ij})]=&\frac 1 n\sum_{i=1}^{
 <h3 id="散列函数"><a href="#散列函数" class="headerlink" title="散列函数"></a>散列函数</h3><p>在实际应用中，常常可以运用启发式方法来构造性能好的散列函数。设计过程中，可以利用关键字分布的有用信息。一种好的方法导出的散列值，在某种程度上应独立于数据可能存在的任何模式，而且散列函数的某些应用可能会要求比简单均匀随机序列更强的性质，即完全区分很相近的关键字。</p>
 <p>多数散列函数都假定关键字的全域为自然数集，因此，如果所给关键字不是自然数，就需要找到一种方法来将它们转化为自然数。</p>
 <p><strong>除法散列法</strong>    通过取k除以m的余数，将关键字k映射到m个槽位中的某一个上，即散列函数为$h(k)=k\ mod\ m$，一般情况下，m选择不接近2的整数幂的素数。</p>
-<p>乘法散列法    构造散列函数的乘法散列法包括两个步骤，第一步，用关键字k乘上常数A(0&lt;A&lt;1)，并提取A的小数部分，第二步，用m乘以这个值，再向下取整，即散列函数为$h(k)$=\lfloor m(kA \mod 1)\rfloor。</p>
+<p><strong>乘法散列法</strong>    构造散列函数的乘法散列法包括两个步骤，第一步，用关键字k乘上常数A(0&lt;A&lt;1)，并提取A的小数部分，第二步，用m乘以这个值，再向下取整，即散列函数为$h(k)$=\lfloor m(kA \mod 1)\rfloor。</p>
 
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://tkfblog.com/post/cca1b543.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="TKF">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/TKF.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="TKF">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/post/cca1b543.html" itemprop="url">词频统计</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-12T12:01:17+08:00">
-                2020-05-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/project/" itemprop="url" rel="index">
-                    <span itemprop="name">project</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Trie树"><a href="#Trie树" class="headerlink" title="Trie树"></a>Trie树</h2>
           
         
       
@@ -1577,7 +1456,7 @@ Maximum=B\log_2(1+S/N)(bps)</script><p>热噪声取决于很多因素，例如�
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

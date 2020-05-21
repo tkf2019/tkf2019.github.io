@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://tkfblog.com/"/>
-  <updated>2020-05-19T15:04:07.605Z</updated>
+  <updated>2020-05-21T14:48:36.474Z</updated>
   <id>http://tkfblog.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>2</title>
-    <link href="http://tkfblog.com/post/1ad5be0d.html"/>
-    <id>http://tkfblog.com/post/1ad5be0d.html</id>
-    <published>2020-05-19T15:02:44.000Z</published>
-    <updated>2020-05-19T15:04:07.605Z</updated>
+    <title>词频统计</title>
+    <link href="http://tkfblog.com/post/cca1b543.html"/>
+    <id>http://tkfblog.com/post/cca1b543.html</id>
+    <published>2020-05-21T04:01:17.000Z</published>
+    <updated>2020-05-21T14:48:36.474Z</updated>
     
     <summary type="html">
     
@@ -29,12 +29,14 @@
       
         
         
-          &lt;p&gt;&lt;img src=&quot;/post/Hexo\source\_posts\2\Linear_1.jpg&quot; alt=&quot;同学的考试题~&quot;&gt;&lt;/p&gt;
-&lt;h4 id=&quot;a&quot;&gt;&lt;a href=&quot;#a&quot; class=&quot;headerlink&quot;
+          &lt;p&gt;小项目时间耗费10h+，中间出现了大量的问题，主要由于不太熟悉C语言，很多流操作和内存操作用起来十分生涩。&lt;/p&gt;
+&lt;h3 id=&quot;需求分析&quot;&gt;&lt;a href=&quot;#需求分析&quot; class=&quot;headerlink&quot;
         
       
     
     </summary>
+    
+      <category term="Project" scheme="http://tkfblog.com/categories/Project/"/>
     
     
   </entry>
@@ -92,7 +94,7 @@
     <link href="http://tkfblog.com/post/9fdad6da.html"/>
     <id>http://tkfblog.com/post/9fdad6da.html</id>
     <published>2020-05-17T11:09:49.000Z</published>
-    <updated>2020-05-19T14:40:24.981Z</updated>
+    <updated>2020-05-21T14:51:52.719Z</updated>
     
     <summary type="html">
     
@@ -100,8 +102,8 @@
       
         
         
-          &lt;p&gt;&lt;img src=&quot;/post/Hexo\source\_posts\线性代数综合问题(2&quot; alt=&quot;同学的考试题~&quot;&gt;\Linear_1.jpg)&lt;/p&gt;
-&lt;h4 id=&quot;a&quot;&gt;&lt;a href=&quot;#a&quot; class=&quot;headerlink&quot;
+          &lt;p&gt;&lt;img src=&quot;/post/9fdad6da.htm/Hexo\source\_posts\线性代数综合问题(2&quot; alt=&quot;同学的考试题~&quot;&gt;\Linear_1.jpg)&lt;/p&gt;
+&lt;img
         
       
     
@@ -117,7 +119,7 @@
     <link href="http://tkfblog.com/post/718acd86.html"/>
     <id>http://tkfblog.com/post/718acd86.html</id>
     <published>2020-05-12T04:56:56.000Z</published>
-    <updated>2020-05-19T03:26:43.635Z</updated>
+    <updated>2020-05-21T14:36:04.503Z</updated>
     
     <summary type="html">
     
@@ -135,30 +137,6 @@
     
     
       <category term="[object Object]" scheme="http://tkfblog.com/tags/object-Object/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>词频统计</title>
-    <link href="http://tkfblog.com/post/cca1b543.html"/>
-    <id>http://tkfblog.com/post/cca1b543.html</id>
-    <published>2020-05-12T04:01:17.000Z</published>
-    <updated>2020-05-14T02:55:23.669Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;Trie树&quot;&gt;&lt;a href=&quot;#Trie树&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="project" scheme="http://tkfblog.com/categories/project/"/>
-    
     
   </entry>
   
