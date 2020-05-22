@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://tkfblog.com/"/>
-  <updated>2020-05-21T14:48:36.474Z</updated>
+  <updated>2020-05-22T14:45:27.748Z</updated>
   <id>http://tkfblog.com/</id>
   
   <author>
@@ -17,11 +17,35 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>乘法逆元</title>
+    <link href="http://tkfblog.com/post/bfaab9bd.html"/>
+    <id>http://tkfblog.com/post/bfaab9bd.html</id>
+    <published>2020-05-22T14:43:43.000Z</published>
+    <updated>2020-05-22T14:45:27.748Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;figure class=&quot;highlight c&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span
+        
+      
+    
+    </summary>
+    
+      <category term="ALG" scheme="http://tkfblog.com/categories/ALG/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>词频统计</title>
     <link href="http://tkfblog.com/post/cca1b543.html"/>
     <id>http://tkfblog.com/post/cca1b543.html</id>
     <published>2020-05-21T04:01:17.000Z</published>
-    <updated>2020-05-21T14:48:36.474Z</updated>
+    <updated>2020-05-22T09:19:09.731Z</updated>
     
     <summary type="html">
     
@@ -119,7 +143,7 @@
     <link href="http://tkfblog.com/post/718acd86.html"/>
     <id>http://tkfblog.com/post/718acd86.html</id>
     <published>2020-05-12T04:56:56.000Z</published>
-    <updated>2020-05-21T14:36:04.503Z</updated>
+    <updated>2020-05-22T10:55:21.760Z</updated>
     
     <summary type="html">
     
@@ -135,8 +159,6 @@
     
       <category term="ALG" scheme="http://tkfblog.com/categories/ALG/"/>
     
-    
-      <category term="[object Object]" scheme="http://tkfblog.com/tags/object-Object/"/>
     
   </entry>
   

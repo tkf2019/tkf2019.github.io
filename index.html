@@ -240,6 +240,149 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://tkfblog.com/post/bfaab9bd.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="TKF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/TKF.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TKF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/post/bfaab9bd.html" itemprop="url">乘法逆元</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-22T22:43:43+08:00">
+                2020-05-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ALG/" itemprop="url" rel="index">
+                    <span itemprop="name">ALG</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LL long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 3000001</span></span><br><span class="line">LL X, Y, n, p;</span><br><span class="line">LL inv[MAXN], used[MAXN], prime[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">EUCLID</span><span class="params">(LL a,LL b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(b == <span class="number">0</span>)&#123;</span><br><span class="line">        X = <span class="number">1</span>;</span><br><span class="line">        Y = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    EUCLID(b, a % b);</span><br><span class="line">    LL tmp = X;</span><br><span class="line">    X = Y;</span><br><span class="line">    Y = tmp - a / b * Y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; p;</span><br><span class="line">    <span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">memset</span>(used, <span class="number">0</span>, <span class="keyword">sizeof</span>(used));</span><br><span class="line">    inv[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!used[i])&#123;</span><br><span class="line">            prime[++num] = i;</span><br><span class="line">            EUCLID(i, p);</span><br><span class="line">            inv[i] = X &gt; <span class="number">0</span> ? X : X + p;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= num &amp;&amp; i * prime[j] &lt;= n; ++j) &#123;</span><br><span class="line">            used[i * prime[j]] = <span class="number">1</span>;</span><br><span class="line">            inv[i * prime[j]] = inv[i] * inv[prime[j]] % p;</span><br><span class="line">            <span class="keyword">if</span> (i % prime[j] == <span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(LL i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; inv[i] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>求乘法逆元：应用扩展欧几里得算法和欧拉筛；</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://tkfblog.com/post/cca1b543.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -342,7 +485,7 @@
 <script type="math/tex; mode=display">
 H(string)=(\sum_{each\ c\in string}ASCII\ number\ of\ c)\ mod\ 512</script><p>有限全域取决于词典规模，查找操作时间复杂度可降低至O(n)，具体实现代码如下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">LWord* _new_lword_alloc(<span class="keyword">char</span>* <span class="keyword">word</span>)</span><br><span class="line">&#123;</span><br><span class="line">    LWord* p = (LWord*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(LWord));</span><br><span class="line">    <span class="built_in">strcpy</span>(p-&gt;<span class="keyword">word</span>, <span class="keyword">word</span>);</span><br><span class="line">    p-&gt;num = <span class="number">1</span>;</span><br><span class="line">    p-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">hash</span><span class="params">(<span class="keyword">char</span>* <span class="keyword">word</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> Hash = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(*<span class="keyword">word</span> != <span class="string">'\0'</span>)</span><br><span class="line">        Hash += *<span class="keyword">word</span>++;</span><br><span class="line">    <span class="keyword">return</span> Hash &amp; <span class="number">511</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">addWord</span><span class="params">(<span class="keyword">char</span>* <span class="keyword">word</span>, LWord** HASH)</span></span></span><br><span class="line"><span class="function"></span>&#123;   </span><br><span class="line">    <span class="comment">//if(!search(word, _root)) return;</span></span><br><span class="line">    <span class="keyword">int</span> index = hash(<span class="keyword">word</span>);</span><br><span class="line">    <span class="comment">//create a new node if a NULL pointer </span></span><br><span class="line">    <span class="keyword">if</span>(HASH[index] == <span class="literal">NULL</span>)&#123;</span><br><span class="line">        HASH[index] = _new_lword_alloc(<span class="keyword">word</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    LWord* p = HASH[index];</span><br><span class="line">    <span class="comment">//find the word in the list of hash table </span></span><br><span class="line">    <span class="keyword">while</span>(p-&gt;next != <span class="literal">NULL</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!<span class="built_in">strcmp</span>(<span class="keyword">word</span>, p-&gt;<span class="keyword">word</span>))&#123;</span><br><span class="line">            p-&gt;num++;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        p = p-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(!<span class="built_in">strcmp</span>(<span class="keyword">word</span>, p-&gt;<span class="keyword">word</span>))&#123;</span><br><span class="line">        p-&gt;num++;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//failed to find then create a new node</span></span><br><span class="line">    p-&gt;next = _new_lword_alloc(<span class="keyword">word</span>);</span><br><span class="line">    word_num++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>（散列表相关知识请参考<a href>散列表</a>）</p>
+<p>（散列表相关知识请参考<a href="https://tkf2019.github.io/post/718acd86.html" target="_blank" rel="noopener">散列表</a>）</p>
 <h4 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h4><p>先开辟内存指向散列表中的单词。建堆操作取决于最初要求的排序范围，利用最小堆对每次读入单词使用堆维护操作，最后利用堆排序得到词频序列，若词典规模为M，排序范围为N，则排序操作的近似时间复杂度为O((M+N)lgN)，具体实现代码如下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cmp</span><span class="params">(LWord* w1, LWord* w2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(w1-&gt;num &lt; w2-&gt;num) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(w1-&gt;num == w2-&gt;num)&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">strcmp</span>(w1-&gt;<span class="keyword">word</span>, w2-&gt;<span class="keyword">word</span>) &gt; <span class="number">0</span>) </span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">LWord** <span class="title">Sort</span><span class="params">(LWord** HASH)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(word_num &gt; N) word_num = N;</span><br><span class="line">    <span class="comment">//create new heap to sort</span></span><br><span class="line">    LWord** WORD = (LWord**)<span class="built_in">malloc</span>((word_num + <span class="number">2</span>)*<span class="keyword">sizeof</span>(LWord*));</span><br><span class="line">    WORD[<span class="number">0</span>] = <span class="literal">NULL</span>;</span><br><span class="line">    WORD[word_num + <span class="number">1</span>] = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">    LWord* p;</span><br><span class="line">    <span class="comment">//Build a heap in the size of N</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; index &lt; MAX_INDEX_NUM; index++)&#123;</span><br><span class="line">        p = HASH[index];</span><br><span class="line">        <span class="keyword">while</span>(p != <span class="literal">NULL</span>)&#123;</span><br><span class="line">            WORD[i] = p; </span><br><span class="line">            _up_heapify(WORD, i);</span><br><span class="line">            p = p-&gt;next;</span><br><span class="line">            <span class="keyword">if</span>(++i &gt; N) <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i &gt; N) <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//Use priority queue to change the peak of min_heap</span></span><br><span class="line">    <span class="keyword">for</span>(; index &lt; MAX_INDEX_NUM; index++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(p == <span class="literal">NULL</span>) p = HASH[index];</span><br><span class="line">        <span class="keyword">while</span>(p != <span class="literal">NULL</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(cmp(WORD[<span class="number">1</span>], p))&#123;</span><br><span class="line">                WORD[<span class="number">1</span>] = p;</span><br><span class="line">                _down_heapify(WORD, N);</span><br><span class="line">            &#125;</span><br><span class="line">            p = p-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    heap_sort(WORD);</span><br><span class="line">    <span class="keyword">return</span> WORD;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">void</span> _down_heapify(LWord** WORD, <span class="keyword">int</span> <span class="built_in">size</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">size</span> &lt;= <span class="number">1</span>) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> index = <span class="number">1</span>, halfsize = (<span class="built_in">size</span> &gt;&gt; <span class="number">1</span>);</span><br><span class="line">    LWord *p = WORD[index];</span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)&#123;  </span><br><span class="line">        <span class="keyword">int</span> smallest = index;</span><br><span class="line">        <span class="comment">//find the smallest node in the heap</span></span><br><span class="line">        <span class="keyword">if</span>(cmp(WORD[index &lt;&lt; <span class="number">1</span>], WORD[index]))</span><br><span class="line">            smallest = index &lt;&lt; <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>((index &lt;&lt; <span class="number">1</span>) + <span class="number">1</span> &lt;= <span class="built_in">size</span>)</span><br><span class="line">            <span class="keyword">if</span>(cmp(WORD[(index &lt;&lt; <span class="number">1</span>) + <span class="number">1</span>], WORD[smallest]))</span><br><span class="line">                smallest = (index &lt;&lt; <span class="number">1</span>) + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(smallest == index) <span class="keyword">break</span>;</span><br><span class="line">        <span class="comment">//exchange the node</span></span><br><span class="line">        LWord *tmp = WORD[smallest];</span><br><span class="line">        WORD[smallest] = WORD[index];</span><br><span class="line">        WORD[index] = tmp;</span><br><span class="line">        <span class="keyword">if</span>(smallest == (index &lt;&lt; <span class="number">1</span>))</span><br><span class="line">            index = index &lt;&lt; <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> index = (index &lt;&lt; <span class="number">1</span>) + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(index &gt; halfsize) <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">void</span> _up_heapify(LWord** WORD, <span class="keyword">int</span> index)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(index == <span class="number">1</span>) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">while</span>(cmp(WORD[index], WORD[index &gt;&gt; <span class="number">1</span>]))&#123;</span><br><span class="line">        LWord* tmp = WORD[index &gt;&gt; <span class="number">1</span>];</span><br><span class="line">        WORD[index &gt;&gt; <span class="number">1</span>] = WORD[index];</span><br><span class="line">        WORD[index] = tmp;</span><br><span class="line">        index &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(index &lt;= <span class="number">1</span>) <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">heap_sort</span><span class="params">(LWord** WORD)</span>C</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> index = word_num;</span><br><span class="line">    <span class="keyword">while</span>(index &gt;= <span class="number">1</span>)&#123;</span><br><span class="line">        WORD[index + <span class="number">1</span>] = WORD[<span class="number">1</span>];</span><br><span class="line">        WORD[<span class="number">1</span>] = WORD[index];</span><br><span class="line">        WORD[index] = <span class="literal">NULL</span>;</span><br><span class="line">        index--;</span><br><span class="line">        _down_heapify(WORD, index);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="时间优化"><a href="#时间优化" class="headerlink" title="时间优化"></a>时间优化</h3><h4 id="读入"><a href="#读入" class="headerlink" title="读入"></a>读入</h4><p>对于规模较大的文章，重复的流操作时间开销过大，以临时消耗大量空间为代价，开辟内存将整个文章读入字符串，主要用到了C语言中的流操作函数，中间需要注意malloc的使用，最开始忘记在后面乘以sizeof()导致读入错误，具体实现代码如下：</p>
@@ -1001,7 +1144,7 @@ E[\frac{1}{n} \sum_{i=1}^{n}(1+\sum_{j = i+1}^{n}X_{ij})]=&\frac 1 n\sum_{i=1}^{
 <h3 id="散列函数"><a href="#散列函数" class="headerlink" title="散列函数"></a>散列函数</h3><p>在实际应用中，常常可以运用启发式方法来构造性能好的散列函数。设计过程中，可以利用关键字分布的有用信息。一种好的方法导出的散列值，在某种程度上应独立于数据可能存在的任何模式，而且散列函数的某些应用可能会要求比简单均匀随机序列更强的性质，即完全区分很相近的关键字。</p>
 <p>多数散列函数都假定关键字的全域为自然数集，因此，如果所给关键字不是自然数，就需要找到一种方法来将它们转化为自然数。</p>
 <p><strong>除法散列法</strong>    通过取k除以m的余数，将关键字k映射到m个槽位中的某一个上，即散列函数为$h(k)=k\ mod\ m$，一般情况下，m选择不接近2的整数幂的素数。</p>
-<p><strong>乘法散列法</strong>    构造散列函数的乘法散列法包括两个步骤，第一步，用关键字k乘上常数A(0&lt;A&lt;1)，并提取A的小数部分，第二步，用m乘以这个值，再向下取整，即散列函数为$h(k)$=\lfloor m(kA \mod 1)\rfloor。</p>
+<p><strong>乘法散列法</strong>    构造散列函数的乘法散列法包括两个步骤，第一步，用关键字k乘上常数A(0&lt;A&lt;1)，并提取A的小数部分，第二步，用m乘以这个值，再向下取整，即散列函数为$h(k)=\lfloor m(kA \mod 1)\rfloor$。</p>
 
           
         
@@ -1456,7 +1599,7 @@ Maximum=B\log_2(1+S/N)(bps)</script><p>热噪声取决于很多因素，例如�
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1473,15 +1616,6 @@ Maximum=B\log_2(1+S/N)(bps)</script><p>热噪声取决于很多因素，例如�
               </div>
             
 
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                
-                  <span class="site-state-item-count">1</span>
-                  <span class="site-state-item-name">tags</span>
-                
-              </div>
             
 
           </nav>
