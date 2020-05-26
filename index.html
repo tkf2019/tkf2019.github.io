@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-CN">
+<html class="theme-next mist use-motion" lang="zh-CN">
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -104,9 +104,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
+    scheme: 'Mist',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"right","display":"hide","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -151,7 +151,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left 
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-right 
   page-home">
     <div class="headband"></div>
 
@@ -240,6 +240,199 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://tkfblog.com/post/8f7ce547.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="TKF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/TKF.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TKF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/post/8f7ce547.html" itemprop="url">HTML/CSS</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-26T11:18:36+08:00">
+                2020-05-26
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-05-26T18:26:30+08:00">
+                2020-05-26
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Networks/" itemprop="url" rel="index">
+                    <span itemprop="name">Computer Networks</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="Main-root"><a href="#Main-root" class="headerlink" title="Main root"></a>Main root</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>The html element represents the root of an HTML document.</p>
+<h4 id="Document-metadata"><a href="#Document-metadata" class="headerlink" title="Document metadata"></a>Document metadata</h4><p>Metadata contains information about the page. This includes information about styles, scripts and data to help software use and render the page.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">base</span>&gt;</span><span class="tag">&lt;/<span class="name">base</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>The base element specifies the base URL to use for all relative URLs in a document.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>The head element represents a collection of metadata for the Document.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span>&gt;</span><span class="tag">&lt;/<span class="name">link</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>The External Resource link element specifies relationshops between the current document and an external resource. This element is most commonly used to link to stylesheets, but is also used to establish sites icons among other things.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>The meta element represents metadata that cannot be represented by ohter HTML meta-related elements.</p>
+<p>charset: This attribute declares the document’s character encoding. It’s value must be an ASCII case-intensitive match for the string “utf-8”.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">style</span>&gt;</span><br><span class="line"><span class="selector-class">.wrapper</span>&#123;</span><br><span class="line">	<span class="attribute">display</span>: grid;</span><br><span class="line">    <span class="attribute">grid-template-columns</span>: <span class="number">70%</span> <span class="number">30%</span>;</span><br><span class="line">    <span class="comment">/*grid-template-columns: 1fr 1fr 1fr;*/</span></span><br><span class="line">    <span class="comment">/*grid-template-columns: repeat(3, 1fr);*/</span></span><br><span class="line">    <span class="comment">/*grid-template-columes: repeat(4, 1fr, 2fr);*/</span></span><br><span class="line">    <span class="attribute">grid-gap</span>: <span class="number">1em</span>;</span><br><span class="line">    <span class="attribute">grid-auto-rows</span>: <span class="built_in">minmax</span>(<span class="number">100px</span>, auto);</span><br><span class="line">    <span class="attribute">justify-items</span>: strentch;</span><br><span class="line">    <span class="attribute">align-items</span>: strentch;</span><br><span class="line">    <span class="comment">/*justify-self: end;*/</span></span><br><span class="line">    <span class="comment">/*align-self: start;*/</span></span><br><span class="line">    <span class="attribute">grid-column</span>: <span class="number">1</span>/<span class="number">3</span>;</span><br><span class="line">    <span class="attribute">grid-row</span>: <span class="number">1</span>/<span class="number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.wrapper</span> &gt; <span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#eee</span>;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">1em</span>;</span><br><span class="line">    <span class="comment">/*padding: 10%;*/</span></span><br><span class="line">    <span class="attribute">border</span>: <span class="number">#333</span> <span class="number">3px</span> solid;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.wrapper</span> &gt; <span class="selector-tag">div</span>: <span class="selector-tag">nth-child</span>(<span class="selector-tag">odd</span>)&#123;</span><br><span class="line">	<span class="attribute">background</span>: <span class="number">#ddd</span>;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<p>The style element allows authors to embed style information in their documents. The style element is one of several inputs to the styling processing model. The element does not represent content for the user.</p>
+<p>In HTML, <strong>margin</strong> means the distance between frames while <strong>padding</strong> means the distance between frame and content.</p>
+<h5 id="Funtions"><a href="#Funtions" class="headerlink" title="Funtions"></a>Funtions</h5><p><strong>repeat</strong> can be extended into repeated patterns and the syntax is repeat(number, args…)；</p>
+<p><strong>minmax</strong> defines the minimum(initial) and maximum(auto) size of rows and columns, usually used after auto shorthands and the syntax is minmax(length/percentage/auto, length/percentage/auto);</p>
+<h5 id="Shorthands"><a href="#Shorthands" class="headerlink" title="Shorthands"></a>Shorthands</h5><p><strong>grid-template-columns</strong> devides the content and specifies, as a space-separated track list, the line names and track sizing functions of the grid.</p>
+<p><strong>grid-gap</strong> specifies the gutters between grid columns and grid rows in one declaration. Replaced by ‘gap’ property.</p>
+<p><strong>grid-auto-rows</strong> specifies the size of implicitly created rows.</p>
+<p><strong>justify-items</strong> defines the default <strong>justify-self</strong> for all items of the box, giving them the default way of justifying each box along the appropriate axis.</p>
+<p><strong>align-items</strong> flex items along the cross axis of the current line of the flex container.</p>
+<p><strong>align-self</strong> allows the default alignment along the cross axis to be overridden for individual flex items.</p>
+<p><strong>grid-column/grid-row</strong> defines the start of grid column(row) and the end of grid column(row).Only one number means num to num + 1; </p>
+<p><strong>background</strong>  sets most background properties at the same place in the style sheet.</p>
+<p><strong>padding</strong> defines the inner margin of an element with percentage or length. The order of the elements is top(<strong>padding-top</strong>), right(<strong>padding-right</strong>), bottom(<strong>padding-bottom</strong>) and left(<strong>padding-left</strong>). If left is omitted, it is the same as right. If bottom is omitted it is the same as top, if right is omitted it is the same as top. The value may not be negative.</p>
+<p><strong>border</strong> sets border width, style, and color.</p>
+<p><strong>nth-child(n)</strong> specifies the nth child with other attributes.n can be number, odd, even and so on. </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>The title element represents the document’s title or name. Authors should use titles that identify their documents even when they are used out of context, for example in a user’s history or bookmarks, or in search results. The document’s title is often different from its first heading, since the first heading does not have to stand alone when taken out of context.</p>
+<h4 id="Sectioning-Root"><a href="#Sectioning-Root" class="headerlink" title="Sectioning Root"></a>Sectioning Root</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>The body element represents the content of the document.</p>
+<h4 id="Text-Content"><a href="#Text-Content" class="headerlink" title="Text Content"></a>Text Content</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"wrapper"</span> <span class="attr">style</span>=<span class="string">"width: 200px"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"nested"</span>&gt;</span></span><br><span class="line">      	/*content*/</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>The div element has no special meaning at all. It represents its children. It can be used with the <strong>class</strong>, lang, and title attributes to mark up semantics common to a group of consecutive elements.</p>
+<h4 id="Inline-Text-Semantics"><a href="#Inline-Text-Semantics" class="headerlink" title="Inline Text Semantics"></a>Inline Text Semantics</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"https://www.mozilla.org/"</span> <span class="attr">title</span>=<span class="string">""</span> <span class="attr">target</span>=<span class="string">"_blank"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>The HTML element, with its href attribute, creates a hyperlink.The <strong>href</strong> attribute specifies the web address that you want the link to point to.The <strong>title</strong> attributes specifies extra information about the link such as what page is being linked to.The <strong>target</strong> attribute specifies the browsing context that will be used to display the link. target=”_blank” will display the link in a new tab.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">disabled</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span></span></span><br></pre></td></tr></table></figure>
+<p>The input element represents a typed data field, usually with a form control to allow the user to edit the data.</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://tkfblog.com/post/bfaab9bd.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -277,7 +470,19 @@
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-05-22T23:00:19+08:00">
+                2020-05-22
+              </time>
             
           </span>
 
@@ -343,7 +548,9 @@
     
     
     
-
+    <div>
+      
+    </div>
     
 
     
@@ -420,7 +627,19 @@
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-05-22T23:24:46+08:00">
+                2020-05-22
+              </time>
             
           </span>
 
@@ -504,7 +723,9 @@ H(string)=(\sum_{each\ c\in string}ASCII\ number\ of\ c)\ mod\ 512</script><p>�
     
     
     
-
+    <div>
+      
+    </div>
     
 
     
@@ -581,7 +802,19 @@ H(string)=(\sum_{each\ c\in string}ASCII\ number\ of\ c)\ mod\ 512</script><p>�
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-05-19T21:25:40+08:00">
+                2020-05-19
+              </time>
             
           </span>
 
@@ -681,149 +914,9 @@ A(x)=\sum_{p\leqslant x}\frac{\ln p}p</script><p>令$f(r)=\frac{1}{\ln r}，y=2$
     
     
     
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://tkfblog.com/post/498cfd8e.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="TKF">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/TKF.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="TKF">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/post/498cfd8e.html" itemprop="url">并发编程</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-18T23:34:31+08:00">
-                2020-05-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/" itemprop="url" rel="index">
-                    <span itemprop="name">C++</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="程序运行时间"><a href="#程序运行时间" class="headerlink" title="程序运行时间"></a>程序运行时间</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;thread&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;chrono&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;ctime&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">(<span class="keyword">int</span> s)</span></span>&#123;</span><br><span class="line">    this_thread::sleep_for(chrono::seconds(s));</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">time_t</span> start, <span class="built_in">end</span>;</span><br><span class="line">    start = clock();</span><br><span class="line">    <span class="function">thread <span class="title">t1</span><span class="params">(func, <span class="number">3</span>)</span></span>;</span><br><span class="line">    this_thread::sleep_for(chrono::seconds(<span class="number">2</span>));</span><br><span class="line">    <span class="built_in">end</span> = clock();</span><br><span class="line">    t1.join();</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; (<span class="keyword">double</span>)(<span class="built_in">end</span> - start) &lt;&lt; <span class="string">"ms"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; (<span class="keyword">double</span>)clock() / CLOCKS_PER_SEC &lt;&lt; <span class="string">"s"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
+    <div>
       
     </div>
-    
-    
-    
-
     
 
     
@@ -900,7 +993,19 @@ A(x)=\sum_{p\leqslant x}\frac{\ln p}p</script><p>令$f(r)=\frac{1}{\ln r}，y=2$
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-05-26T20:29:33+08:00">
+                2020-05-26
+              </time>
             
           </span>
 
@@ -957,25 +1062,25 @@ A(x)=\sum_{p\leqslant x}\frac{\ln p}p</script><p>令$f(r)=\frac{1}{\ln r}，y=2$
         
           
             <img src="/post/9fdad6da/Linear_1.jpg" class="" title="同学的一道考试题">
-<h4 id="a"><a href="#a" class="headerlink" title="(a)"></a>(a)</h4><p>$Multiple\ RHS\ by\ \lambda I_n-X$</p>
+<h4 id="a"><a href="#a" class="headerlink" title="(a)"></a>(a)</h4><p>Multiple RHS by $\lambda I_n-X$</p>
 <script type="math/tex; mode=display">
 \begin{align*}
 \sum_{k=1}^{n}\frac{(\lambda I_n-X)x_kx_k^T}{\lambda-\lambda_k}&=\sum_{k=1}^{n}\frac{\lambda x_kx_k^T-\lambda_k x_kx_k^T}{\lambda-\lambda_k}\\&=\sum_{k=1}^{n}x_kx_k^T\\&=I_n
-\end{align*}</script><p>$Similarly,\ for\ X\ is\ symmetric$</p>
+\end{align*}</script><p>Similarly, for X is symmetric</p>
 <script type="math/tex; mode=display">
-\sum_{k=1}^{n}\frac{x_kx_k^T(\lambda I_n-X)}{\lambda-\lambda_k}=I_n</script><h4 id="b"><a href="#b" class="headerlink" title="(b)"></a>(b)</h4><p>$Suppose\ a\ matrix\ X_j\ which\ satisfies\ \lambda I_n-X_j\ is\ the\ matrix\ \lambda I_n-X\ changing\ its\ jth\ column\ into\ the\ base\ vector\ e_j.\ $</p>
-<p>$Then\ \det(\lambda I_{n-1}-Y_j)=\det(\lambda I_n-X_j),\ depending\ on\ Laplace\ Expansion.$</p>
-<p>$ Using\ Cramer’s\ Rule,\ the\ solution\ of\ the\ following\ equation$</p>
+\sum_{k=1}^{n}\frac{x_kx_k^T(\lambda I_n-X)}{\lambda-\lambda_k}=I_n</script><h4 id="b"><a href="#b" class="headerlink" title="(b)"></a>(b)</h4><p>Suppose a matrix $ X_j$ which satisfies $ \lambda I_n-X_j$ is the matrix $\lambda I_n-X$ changing its jth column into the base vector$ e_j.$</p>
+<p>Then $\det(\lambda I_{n-1}-Y_j)=\det(\lambda I_n-X_j),$ depending on Laplace Expansion.</p>
+<p>Using Cramer’s Rule, the solution of the following equation</p>
 <script type="math/tex; mode=display">
-(\lambda I_n-X)x_k=e_k</script><p>$is$</p>
+(\lambda I_n-X)x_k=e_k</script><p>is</p>
 <script type="math/tex; mode=display">
-\begin{align*}|x_{kj}|&=((\lambda I_n-X)^{-1}e_k)_j\\&=(\sum_{k=1}^{n}\frac{x_kx_k^T}{\lambda-\lambda_k})_j\\&=\sum_{k=1}^n\frac{|x_{kj}|^2}{\lambda-\lambda_k}.\end{align*}</script><p>$Thus$</p>
+\begin{align*}|x_{kj}|&=((\lambda I_n-X)^{-1}e_k)_j\\&=(\sum_{k=1}^{n}\frac{x_kx_k^T}{\lambda-\lambda_k})_j\\&=\sum_{k=1}^n\frac{|x_{kj}|^2}{\lambda-\lambda_k}.\end{align*}</script><p>Thus</p>
 <script type="math/tex; mode=display">
 \begin{align*}
 \frac{\det(\lambda I_{n-1}-Y_j)}{\det(\lambda I_n-X)}&=\frac{\det(\lambda I_{n}-X_j)}{\det(\lambda I_n-X)}\\&=\sum_{k=1}^n\frac{|x_{kj}|^2}{\lambda-\lambda_k}.
-\end{align*}</script><h4 id="c"><a href="#c" class="headerlink" title="(c)"></a>(c)</h4><p>$The\ eigenvalue\ of\ \lambda I_{n-1}-Y_j\ is\ \lambda-\lambda_k(Y_j)\ and\ the\ eigenvalue\ of\ \lambda I_{n}-X\ is\ \lambda-\lambda_k(X).$</p>
+\end{align*}</script><h4 id="c"><a href="#c" class="headerlink" title="(c)"></a>(c)</h4><p>The eigenvalue of $ \lambda I_ {n-1}-Y_j$ is $ \lambda-\lambda_k(Y_j)$ and the eigenvalue of $ \lambda I_{n}-X$ is $ \lambda-\lambda_k(X).$</p>
 <script type="math/tex; mode=display">
-\frac{\Pi_{k=1}^{n-1}(\lambda-\lambda_k(Y_j))}{\Pi_{k=1}^n(\lambda-\lambda_k(X))}=\sum_{k=1}^n\frac{|x_{kj}|^2}{\lambda-\lambda_k}</script><p>$for\ the\ determinant\ is\ equal\ to\ the\ product\ of\ all\ eigenvalues.$</p>
+\frac{\Pi_{k=1}^{n-1}(\lambda-\lambda_k(Y_j))}{\Pi_{k=1}^n(\lambda-\lambda_k(X))}=\sum_{k=1}^n\frac{|x_{kj}|^2}{\lambda-\lambda_k}</script><p>for the determinant is equal to the product of all eigenvalues.</p>
 <h4 id="d"><a href="#d" class="headerlink" title="(d)"></a>(d)</h4><script type="math/tex; mode=display">
 (\lambda-\lambda_i(X))\frac{\Pi_{k=1}^{n-1}(\lambda-\lambda_k(Y_j))}{\Pi_{k=1}^n(\lambda-\lambda_k(X))}=(\lambda-\lambda_i(X))\sum_{k=1}^n\frac{|x_{kj}|^2}{\lambda-\lambda_k(X)}</script><script type="math/tex; mode=display">
 \frac{\Pi_{k=1}^{n-1}(\lambda-\lambda_k(Y_j))}{\Pi_{k=1,k\neq i}^n(\lambda-\lambda_k(X))}=|x_{ij}|^2+\sum_{k=1,k\neq i}^n|x_{kj}|^2\frac{\lambda-\lambda_i(X)}{\lambda-\lambda_k(X)}</script><script type="math/tex; mode=display">
@@ -987,7 +1092,9 @@ A(x)=\sum_{p\leqslant x}\frac{\ln p}p</script><p>令$f(r)=\frac{1}{\ln r}，y=2$
     
     
     
-
+    <div>
+      
+    </div>
     
 
     
@@ -1064,7 +1171,19 @@ A(x)=\sum_{p\leqslant x}\frac{\ln p}p</script><p>令$f(r)=\frac{1}{\ln r}，y=2$
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-05-22T18:55:21+08:00">
+                2020-05-22
+              </time>
             
           </span>
 
@@ -1152,7 +1271,9 @@ E[\frac{1}{n} \sum_{i=1}^{n}(1+\sum_{j = i+1}^{n}X_{ij})]=&\frac 1 n\sum_{i=1}^{
     
     
     
-
+    <div>
+      
+    </div>
     
 
     
@@ -1229,7 +1350,19 @@ E[\frac{1}{n} \sum_{i=1}^{n}(1+\sum_{j = i+1}^{n}X_{ij})]=&\frac 1 n\sum_{i=1}^{
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-05-19T19:15:13+08:00">
+                2020-05-19
+              </time>
             
           </span>
 
@@ -1341,7 +1474,9 @@ A=Q_1diag(A_1,\cdots,A_k,\begin{bmatrix}\ &\pi\\  -\pi&\ \end{bmatrix},\cdots,0)
     
     
     
-
+    <div>
+      
+    </div>
     
 
     
@@ -1418,7 +1553,19 @@ A=Q_1diag(A_1,\cdots,A_k,\begin{bmatrix}\ &\pi\\  -\pi&\ \end{bmatrix},\cdots,0)
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-05-10T19:08:35+08:00">
+                2020-05-10
+              </time>
             
           </span>
 
@@ -1521,7 +1668,9 @@ Maximum=B\log_2(1+S/N)(bps)</script><p>热噪声取决于很多因素，例如�
     
     
     
-
+    <div>
+      
+    </div>
     
 
     
@@ -1609,7 +1758,7 @@ Maximum=B\log_2(1+S/N)(bps)</script><p>热噪声取决于很多因素，例如�
               
               <div class="site-state-item site-state-categories">
                 
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">categories</span>
                 
               </div>
@@ -1629,6 +1778,22 @@ Maximum=B\log_2(1+S/N)(bps)</script><p>热噪声取决于很多因素，例如�
           
 
           
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/tkf2019" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="tkf19@mails.tsinghua.edu.cn" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
 
           
           
@@ -1646,6 +1811,8 @@ Maximum=B\log_2(1+S/N)(bps)</script><p>热噪声取决于很多因素，例如�
       
         <div class="back-to-top">
           <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
           
         </div>
       
@@ -1716,6 +1883,9 @@ Maximum=B\log_2(1+S/N)(bps)</script><p>热噪声取决于很多因素，例如�
 
 
 
+  
+  
+
 
 
 
@@ -1754,6 +1924,16 @@ Maximum=B\log_2(1+S/N)(bps)</script><p>热噪声取决于很多因素，例如�
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
   
 
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
 
   
 
@@ -1766,13 +1946,6 @@ Maximum=B\log_2(1+S/N)(bps)</script><p>热噪声取决于很多因素，例如�
 
   
   
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
 
   
 
@@ -1827,6 +2000,21 @@ Maximum=B\log_2(1+S/N)(bps)</script><p>热噪声取决于很多因素，例如�
   
 
   
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
 
   
   
