@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="TKF" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="一、数据链路层的设计问题1.服务数据链路层使用物理层提供的服务在通信信道上发送和接收比特。     完成的功能     向网络层提供一个定义良好的服务接口   处理传输错误（检错+纠错）   调节数据流，确保慢速的接收方不会被快速的发送方淹没     数据链路层从网络层获得数据包，然后将这些数据包封装成帧(frame)以便传输。每个帧包含一个帧头，一个有效载荷(用于存放数据包)以及一个帧尾。 数据">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据链路层">
+<meta property="og:url" content="http://tkfblog.com/post/c8c4683d.html">
+<meta property="og:site_name" content="TKF">
+<meta property="og:description" content="一、数据链路层的设计问题1.服务数据链路层使用物理层提供的服务在通信信道上发送和接收比特。     完成的功能     向网络层提供一个定义良好的服务接口   处理传输错误（检错+纠错）   调节数据流，确保慢速的接收方不会被快速的发送方淹没     数据链路层从网络层获得数据包，然后将这些数据包封装成帧(frame)以便传输。每个帧包含一个帧头，一个有效载荷(用于存放数据包)以及一个帧尾。 数据">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-06-19T07:37:52.000Z">
+<meta property="article:modified_time" content="2020-08-13T04:11:12.029Z">
+<meta property="article:author" content="TKF">
+<meta property="article:tag" content="Algorithms">
+<meta property="article:tag" content=" Networks">
+<meta property="article:tag" content=" Systems">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"hide","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://tkfblog.com/post/c8c4683d.html"/>
+
+
+
+
+
+  <title>数据链路层 | TKF</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">TKF</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://tkfblog.com/post/c8c4683d.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="TKF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/TKF.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TKF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">数据链路层</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-19T15:37:52+08:00">
+                2020-06-19
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-08-13T12:11:12+08:00">
+                2020-08-13
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Networks/" itemprop="url" rel="index">
+                    <span itemprop="name">Computer Networks</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="一、数据链路层的设计问题"><a href="#一、数据链路层的设计问题" class="headerlink" title="一、数据链路层的设计问题"></a>一、数据链路层的设计问题</h3><h4 id="1-服务"><a href="#1-服务" class="headerlink" title="1.服务"></a>1.服务</h4><p>数据链路层使用物理层提供的服务在通信信道上发送和接收比特。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">完成的功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">向网络层提供一个定义良好的服务接口</td>
+</tr>
+<tr>
+<td style="text-align:left">处理传输错误（检错+纠错）</td>
+</tr>
+<tr>
+<td style="text-align:left">调节数据流，确保慢速的接收方不会被快速的发送方淹没</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>数据链路层从网络层获得数据包，然后将这些数据包封装成<strong>帧</strong>(frame)以便传输。每个帧包含一个帧头，一个有效载荷(用于存放数据包)以及一个帧尾。</p>
+<p>数据链路层的协议更加简单和纯粹，适合详细学习理解其中的原理。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>数据链路层提供的服务</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>无确认的无连接服务：发送及接收独立的帧而不对这些帧进行确认，主要适用于错误率很低的场合和实时通信</td>
+</tr>
+<tr>
+<td>有确认的无连接服务：发送的每一帧都需要单独确认，主要适用于不可靠的信道，如无线系统(802.11)</td>
+</tr>
+<tr>
+<td>有确认的有连接服务：为网络层进程提供可靠的比特流，主要适用于长距离且不可靠的链路</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>面向连接的服务有三个阶段：建立连接，初始化各种变量和计数器；传输数据帧；释放连接。</p>
+<h4 id="2-成帧"><a href="#2-成帧" class="headerlink" title="2.成帧"></a>2.成帧</h4><h5 id="1-字节计数法-会错位，无法纠错无法重传，无实际应用价值"><a href="#1-字节计数法-会错位，无法纠错无法重传，无实际应用价值" class="headerlink" title="(1)字节计数法(会错位，无法纠错无法重传，无实际应用价值)"></a>(1)字节计数法(会错位，无法纠错无法重传，无实际应用价值)</h5><h5 id="2-PPP协议-Point-to-Point-Protocol"><a href="#2-PPP协议-Point-to-Point-Protocol" class="headerlink" title="(2)PPP协议(Point-to-Point Protocol)"></a>(2)PPP协议(Point-to-Point Protocol)</h5><h5 id="3-HDLC协议-High-Level-Data-Link-Control"><a href="#3-HDLC协议-High-Level-Data-Link-Control" class="headerlink" title="(3)HDLC协议(High-Level Data Link Control)"></a>(3)HDLC协议(High-Level Data Link Control)</h5><h5 id="4-物理层编码违禁法"><a href="#4-物理层编码违禁法" class="headerlink" title="(4)物理层编码违禁法"></a>(4)物理层编码违禁法</h5><p>4B/5B线性编码模式，增加25%开销获得额外的标志字段，具体参见<a href="https://tkf2019.github.io/post/652d7ab3.html" target="_blank" rel="noopener">物理层</a>内容；以太网和802.11使用了共同的分界模式，应用<strong>前导码</strong>(preamble)：用一个定义良好的比特来标识一帧的开始，前导码之后的长度字段用来定位帧的结束位置</p>
+<h4 id="3-差错控制"><a href="#3-差错控制" class="headerlink" title="3.差错控制"></a>3.差错控制</h4><p>协议要求接收方发回一些特殊的控制帧，发送方可以得知传输过程是否发生了错误，并进行重传。如果一个帧被完全丢失，则无法判断该帧的信息是否出错，发送方需要启动一个计时器。一般情况下，在计时器超时前，该帧应该被正确地接收，并且确认帧也被传了回来。确认丢失之后，发送方需要重新发送帧。为避免接收方重复地向网络层发送同一信息，需要在帧中加入识别序号用以区分原始帧和重传帧。</p>
+<h4 id="4-流量控制"><a href="#4-流量控制" class="headerlink" title="4.流量控制"></a>4.流量控制</h4><p>为协调发送方发送帧和接收方接收并处理帧的速度，常用的办法有两种：<strong>基于反馈的流量控制</strong>(feedback-based flow control)和<strong>基于速率的流量控制</strong>(rate-based flow control)。基于反馈的流控制协议包含了许多定义良好的规则规定发送方什么时候可以发送下一帧。</p>
+<h3 id="二、差错检测和纠正"><a href="#二、差错检测和纠正" class="headerlink" title="二、差错检测和纠正"></a>二、差错检测和纠正</h3><p>错误处理有两种基本策略，都在发送的数据中加入冗余信息。前一种策略使用了<strong>纠错码</strong>(error-correcting code)，通常也称为<strong>前向纠错</strong>(FEC, Froward Error Correction)；后一种策略使用了<strong>检错码</strong>(error-detecting code)。</p>
+<h4 id="1-纠错码"><a href="#1-纠错码" class="headerlink" title="1.纠错码"></a>1.纠错码</h4><h5 id="1-1-相关定义"><a href="#1-1-相关定义" class="headerlink" title="1.1 相关定义"></a>1.1 相关定义</h5><p>一帧由m个<strong>数据位(信息)</strong>和r个<strong>冗余位(校验位)</strong>组成。校验码由数据位的函数计算而得，即校验位由数据位唯一确定，称为<strong>块码</strong>(block code)。<strong>系统码</strong>(systematic code)先发送数据码，再发送校验码；<strong>线性码</strong>(line code)通过线性函数计算出校验码，例如XOR和模2加。数据块总长度n=m+r，称为n位<strong>码字</strong>(codeword)，合法信息与码长的比值称为<strong>码率</strong>(code rate)。</p>
+<h5 id="1-2-海明码"><a href="#1-2-海明码" class="headerlink" title="1.2 海明码"></a>1.2 海明码</h5><p>两个码字XOR之后所得结果中1的个数称为<strong>海明距离</strong>(Hamming distance)。</p>
+<p>块码的检错和纠错特性和其海明距离有关。检测d个错误，需要距离为d+1的编码方案；纠正d个错误，需要距离为2d+1的编码方案。</p>
+<p>设想一种编码方案针对上述码字可纠正所有的单个位错误，因而$2^m$个合法信息对应n+1个不同码字(每一位都有可能发生错误)，且总码字数量不能超过$2^n$，则有</p>
+<script type="math/tex; mode=display">
+m+1\leqslant 2^r-r</script><p>可以根据该公式计算出m位块码对应校验位个数。</p>
+<p>类似地，对于纠正d个错误，可以得到</p>
+<script type="math/tex; mode=display">
+C^d_{m+r}+1\leqslant 2^r</script><p>在海明码中，码字的位数从左至右编号，其中2的幂次方位为校验位，其余位为数据位依次排列。每一个校验位进行模2加，或对某些位的集合进行偶(或奇)校验。求和时，只需将二进制表达覆盖了该2 的幂次方的数进行相加，例如1，3，5，7，9……或2，3，6，7，10，11……，保证最后算得的数为偶数或奇数。对收到的码字进行纠错时，则再次按照前述集合进行模2加，最后从高至低位的二进制数即为错误，取反即可得到正确答案。</p>
+<h5 id="1-3-卷积码"><a href="#1-3-卷积码" class="headerlink" title="1.3 卷积码"></a>1.3 卷积码</h5><p>书中表述不太全，主要思想为卷积码不属于块码，其解码方法为<strong>软判决解码</strong>(soft-decision decoding)，可对原始码进行概率估计；与之对应的为<strong>硬判决解码</strong>(hard-decision decoding)。</p>
+<p>关于Viterbi算法，请见<a href="">HMM</a>。</p>
+<h5 id="1-4-里德所罗门码"><a href="#1-4-里德所罗门码" class="headerlink" title="1.4 里德所罗门码"></a>1.4 里德所罗门码</h5><h5 id="1-5-低密度奇偶校验码"><a href="#1-5-低密度奇偶校验码" class="headerlink" title="1.5 低密度奇偶校验码"></a>1.5 低密度奇偶校验码</h5><h4 id="2-检错码"><a href="#2-检错码" class="headerlink" title="2.检错码"></a>2.检错码</h4><h5 id="2-1-奇偶"><a href="#2-1-奇偶" class="headerlink" title="2.1 奇偶"></a>2.1 奇偶</h5><h5 id="2-2-校验和"><a href="#2-2-校验和" class="headerlink" title="2.2 校验和"></a>2.2 校验和</h5><h5 id="2-3-循环冗余校验码-CRC-Cyclic-Redundancy-Check"><a href="#2-3-循环冗余校验码-CRC-Cyclic-Redundancy-Check" class="headerlink" title="2.3 循环冗余校验码(CRC, Cyclic Redundancy Check)"></a>2.3 循环冗余校验码(CRC, Cyclic Redundancy Check)</h5><h3 id="三、基本协议"><a href="#三、基本协议" class="headerlink" title="三、基本协议"></a>三、基本协议</h3><h4 id="1-Utopia单工协议"><a href="#1-Utopia单工协议" class="headerlink" title="1.Utopia单工协议"></a>1.Utopia单工协议</h4><h4 id="2-无错信道上的单工停-等式协议"><a href="#2-无错信道上的单工停-等式协议" class="headerlink" title="2.无错信道上的单工停-等式协议"></a>2.无错信道上的单工停-等式协议</h4><h4 id="3-有错信道上的单工停-等式协议"><a href="#3-有错信道上的单工停-等式协议" class="headerlink" title="3.有错信道上的单工停-等式协议"></a>3.有错信道上的单工停-等式协议</h4><h3 id="四、滑动窗口协议"><a href="#四、滑动窗口协议" class="headerlink" title="四、滑动窗口协议"></a>四、滑动窗口协议</h3>
+      
+    </div>
+    
+    
+    
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">The End. Thanks for Reading.</div>
+    
+</div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/8f7ce547.html" rel="next" title="HTML/CSS">
+                <i class="fa fa-chevron-left"></i> HTML/CSS
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/f8e09374.html" rel="prev" title="Vue">
+                Vue <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/TKF.jpg"
+                alt="TKF" />
+            
+              <p class="site-author-name" itemprop="name">TKF</p>
+              <p class="site-description motion-element" itemprop="description">This site is used for keeping daily study notes.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/tkf2019" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="tkf19@mails.tsinghua.edu.cn" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、数据链路层的设计问题"><span class="nav-number">1.</span> <span class="nav-text">一、数据链路层的设计问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-服务"><span class="nav-number">1.1.</span> <span class="nav-text">1.服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-成帧"><span class="nav-number">1.2.</span> <span class="nav-text">2.成帧</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-字节计数法-会错位，无法纠错无法重传，无实际应用价值"><span class="nav-number">1.2.1.</span> <span class="nav-text">(1)字节计数法(会错位，无法纠错无法重传，无实际应用价值)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-PPP协议-Point-to-Point-Protocol"><span class="nav-number">1.2.2.</span> <span class="nav-text">(2)PPP协议(Point-to-Point Protocol)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-HDLC协议-High-Level-Data-Link-Control"><span class="nav-number">1.2.3.</span> <span class="nav-text">(3)HDLC协议(High-Level Data Link Control)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-物理层编码违禁法"><span class="nav-number">1.2.4.</span> <span class="nav-text">(4)物理层编码违禁法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-差错控制"><span class="nav-number">1.3.</span> <span class="nav-text">3.差错控制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-流量控制"><span class="nav-number">1.4.</span> <span class="nav-text">4.流量控制</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、差错检测和纠正"><span class="nav-number">2.</span> <span class="nav-text">二、差错检测和纠正</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-纠错码"><span class="nav-number">2.1.</span> <span class="nav-text">1.纠错码</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1-相关定义"><span class="nav-number">2.1.1.</span> <span class="nav-text">1.1 相关定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-海明码"><span class="nav-number">2.1.2.</span> <span class="nav-text">1.2 海明码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-3-卷积码"><span class="nav-number">2.1.3.</span> <span class="nav-text">1.3 卷积码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-里德所罗门码"><span class="nav-number">2.1.4.</span> <span class="nav-text">1.4 里德所罗门码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-5-低密度奇偶校验码"><span class="nav-number">2.1.5.</span> <span class="nav-text">1.5 低密度奇偶校验码</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-检错码"><span class="nav-number">2.2.</span> <span class="nav-text">2.检错码</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-奇偶"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.1 奇偶</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-校验和"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.2 校验和</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-循环冗余校验码-CRC-Cyclic-Redundancy-Check"><span class="nav-number">2.2.3.</span> <span class="nav-text">2.3 循环冗余校验码(CRC, Cyclic Redundancy Check)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、基本协议"><span class="nav-number">3.</span> <span class="nav-text">三、基本协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Utopia单工协议"><span class="nav-number">3.1.</span> <span class="nav-text">1.Utopia单工协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-无错信道上的单工停-等式协议"><span class="nav-number">3.2.</span> <span class="nav-text">2.无错信道上的单工停-等式协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-有错信道上的单工停-等式协议"><span class="nav-number">3.3.</span> <span class="nav-text">3.有错信道上的单工停-等式协议</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、滑动窗口协议"><span class="nav-number">4.</span> <span class="nav-text">四、滑动窗口协议</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">TKF</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>

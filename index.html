@@ -240,6 +240,441 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://tkfblog.com/post/f8e09374.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="TKF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/TKF.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TKF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/post/f8e09374.html" itemprop="url">Vue</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-13T10:02:13+08:00">
+                2020-08-13
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-08-13T10:04:09+08:00">
+                2020-08-13
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="一、Vue"><a href="#一、Vue" class="headerlink" title="一、Vue"></a>一、Vue</h3><h4 id="1-Vue指令"><a href="#1-Vue指令" class="headerlink" title="1.Vue指令"></a>1.Vue指令</h4><h5 id="v-once"><a href="#v-once" class="headerlink" title="v-once"></a>v-once</h5><p>修饰的元素和组件仅渲染一次，不会随着数据的改变而改变</p>
+<h5 id="v-html"><a href="#v-html" class="headerlink" title="v-html"></a>v-html</h5><p>对后面的string类型按照HTML格式进行解析</p>
+<h5 id="v-text"><a href="#v-text" class="headerlink" title="v-text"></a>v-text</h5><h5 id="对文本进行覆盖"><a href="#对文本进行覆盖" class="headerlink" title="对文本进行覆盖"></a>对文本进行覆盖</h5><h5 id="v-pre"><a href="#v-pre" class="headerlink" title="v-pre"></a>v-pre</h5><h5 id="显示元素和组件渲染之前的文本"><a href="#显示元素和组件渲染之前的文本" class="headerlink" title="显示元素和组件渲染之前的文本"></a>显示元素和组件渲染之前的文本</h5><h5 id="v-cloak"><a href="#v-cloak" class="headerlink" title="v-cloak"></a>v-cloak</h5><p>防止异步卡顿等情况下页面闪动，仅在vue解析之后才显示文本</p>
+<h5 id="v-model"><a href="#v-model" class="headerlink" title="v-model"></a>v-model</h5><p>用来创建双向数据绑定，根据表单上的值，自动更新绑定的元素的值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type&#x3D;&quot;text&quot;  v-model&#x3D;&quot;message&quot;&gt;</span><br><span class="line">&lt;input type&#x3D;&quot;text&quot; :value&#x3D;&quot;message&quot; @input&#x3D;&quot;message &#x3D; $event.target.value&quot;&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="v-on"><a href="#v-on" class="headerlink" title="v-on"></a>v-on</h5><p>（语法糖为‘@’）如果传递的方法需要参数且省略括号后，Vue会默认将浏览器产生的事件对象作为参数传入方法，事件对象可以通过$event获取。v-on修饰符有很多，stop阻止事件冒泡，prevent阻止默认事件，enter与键盘操作配合接收回车，native监听组件根元素的原生事件，once只触发一次回调。</p>
+<h5 id="v-bind"><a href="#v-bind" class="headerlink" title="v-bind"></a>v-bind</h5><p>（语法糖为‘：’）动态绑定属性，可以作为一个方法或计算属性，也可以和其他默认类绑定在一起</p>
+<h5 id="v-if"><a href="#v-if" class="headerlink" title="v-if"></a>v-if</h5><p>配合v-else-if,v-else使用，直接添加到html标签中</p>
+<h5 id="v-for"><a href="#v-for" class="headerlink" title="v-for"></a>v-for</h5><p>数组操作应该使用响应式更新：push,pop,unshift,splice,sort,reverse，注意下标操作是非响应式的</p>
+<h4 id="2-Vue修饰符"><a href="#2-Vue修饰符" class="headerlink" title="2.Vue修饰符"></a>2.Vue修饰符</h4><p><strong>lazy</strong>：延迟绑定数据</p>
+<p><strong>number</strong>：强制类型转换</p>
+<p><strong>trim</strong>：过滤表单前后的空格</p>
+<h4 id="3-组件化-components"><a href="#3-组件化-components" class="headerlink" title="3.组件化(components)"></a>3.组件化(components)</h4><h5 id="props"><a href="#props" class="headerlink" title="props"></a>props</h5><p>props有三个成员，type声明类型，default声明默认值，required来决定是否必须传值，和Vue对象中的data类似，default需要使用工厂函数进行声明，因为函数的作用域可以避免多个对象共用相同地址的数据。在利用v-bind将父组件的数据传递给子组件时，需要注意v-bind不支持大写字母，驼峰标识应该转为’-‘</p>
+<h5 id="自定义事件"><a href="#自定义事件" class="headerlink" title="自定义事件"></a>自定义事件</h5><p>子组件向父组件传递数据，使用$emit注册事件名称并传递参数</p>
+<h5 id="watch"><a href="#watch" class="headerlink" title="watch"></a>watch</h5><p>可以通过子组件的watch属性监听成员值的变化</p>
+<h5 id="children-refs-parent-root"><a href="#children-refs-parent-root" class="headerlink" title="$children/$refs/$parent/$root"></a>$children/$refs/$parent/$root</h5><p>$children生成包含子组件的数组，可以直接通过数组访问子组件的属性，$refs通过对子组件声明ref属性，才可以将该子组件关联到数组中,$parent访问父组件,$root访问根组件</p>
+<h4 id="4-插槽-slot"><a href="#4-插槽-slot" class="headerlink" title="4.插槽(slot)"></a>4.插槽(slot)</h4><p>插槽可以命名，注意变量的作用域：父组件模板的所有内容会在父级作用域内编译，子组件模板的所有内容会在子级作用域内编译</p>
+<h5 id="slot-scope-作用域插槽"><a href="#slot-scope-作用域插槽" class="headerlink" title="slot-scope(作用域插槽)"></a>slot-scope(作用域插槽)</h5><p>使用作用域插槽获取子组件中的数据，父组件则声明数据的使用方式</p>
+<h4 id="5-模块化-modules"><a href="#5-模块化-modules" class="headerlink" title="5.模块化(modules)"></a>5.模块化(modules)</h4><h5 id="ES6模块化规范"><a href="#ES6模块化规范" class="headerlink" title="ES6模块化规范"></a>ES6模块化规范</h5><p>export关键字可以在声明变量的同时导出，普通导出时不能重命名，可以使用export default导出并重命名；import导入模块可以使用通配符*全部导出</p>
+<h5 id="CommonJs模块化规范"><a href="#CommonJs模块化规范" class="headerlink" title="CommonJs模块化规范"></a>CommonJs模块化规范</h5><p>使用module.export/require建立模块之间的关联，传递类型均为对象</p>
+<p>6.响应式</p>
+<p>调用Vue.set和Vue.delete等函数对数组或者映射进行添加或删除操作，注意下标操作是非响应式的。</p>
+<h3 id="二、ES6"><a href="#二、ES6" class="headerlink" title="二、ES6"></a>二、ES6</h3><h4 id="1-定义变量"><a href="#1-定义变量" class="headerlink" title="1.定义变量"></a>1.定义变量</h4><p>ES5：使用<strong>var</strong>，在function中有作用域的概念，在for和if中无作用域的概念。应用工厂函数或者匿名闭包解决类似问题，闭包可以增强代码可读性，但运行起来内存消耗较大且影响速度。</p>
+<p>ES6：引入了<strong>let/const</strong>修饰符，目的是完善JavaScript早期开发中遗留的一大问题：作用域。let在for和if中有作用域的概念。const则表示被声明对象的内存地址不可以被更改，但注意其内部属性是可以更改的，所以在使用const时要谨慎，必须就地初始化（和C/C++中的const，Java中的final类似)。ES6开发中优先考虑const。</p>
+<h4 id="2-对象字面量增强"><a href="#2-对象字面量增强" class="headerlink" title="2.对象字面量增强"></a>2.对象字面量增强</h4><p>在ES6中，对象可以通过键值解构来直接获得其中的变量名和内容，对象内部的函数声明不需要再使用function声明。现阶段，Vue开发大多使用ES6，Angular开发则使用Microsoft开发的TypeScript，添加了类型检测的功能。</p>
+<h4 id="3-箭头函数"><a href="#3-箭头函数" class="headerlink" title="3.箭头函数"></a>3.箭头函数</h4><p>箭头函数中的this向外层作用域查找，直到有this的定义。</p>
+<h4 id="4-对象解构"><a href="#4-对象解构" class="headerlink" title="4.对象解构"></a>4.对象解构</h4><p>类似于python解包的用法。</p>
+<h3 id="三、TypeScript"><a href="#三、TypeScript" class="headerlink" title="三、TypeScript"></a>三、TypeScript</h3><h3 id="四、webpack"><a href="#四、webpack" class="headerlink" title="四、webpack"></a>四、webpack</h3><p>webpack是一款强大的打包工具，需要掌握node的基础使用以及ES6。</p>
+<h4 id="1-配置webpack-config-js"><a href="#1-配置webpack-config-js" class="headerlink" title="1.配置webpack.config.js"></a>1.配置webpack.config.js</h4><p>使用path包动态获取当前绝对路径。在当前路径下执行npm init命令，并执行npm install进行绑定，执行npm install webpack@3.6.0 —save-dev在本地安装webpack。<strong>注意</strong>：-dev表示开发时依赖，最终运行程序不需要安装的内容。很明显，我们仅在对文件进行解析和打包时使用以下插件，所以需要加上-dev。</p>
+<p>执行npm install —save-dev css-loader和npm install —save-dev style-loader对.css文件进行加载并将样式添加到DOM中。注意npm在执行use过程中是从右向左读取，根据插件之间的依赖关系，需要先绑定css-loader。类似地，我们可以安装less-loader，sass-loader等将.less、.scss文件先解析为css文件。</p>
+<p><strong>注意</strong>：执行npm install -g cnpm —registry=<a href="https://registry.npm.taobao.org安装淘宝镜像，并执行cnpm" target="_blank" rel="noopener">https://registry.npm.taobao.org安装淘宝镜像，并执行cnpm</a> install node-sass —save-dev在本地安装node-sass(国外安装环境较差，会报一些路径错误包依赖错误等等乱七八糟的东西)，或者执行npm config set sass_binary_site=<a href="https://npm.taobao.org/mirrors/node-sass修改node-sass安装源，之后根据peerDependency执行npm" target="_blank" rel="noopener">https://npm.taobao.org/mirrors/node-sass修改node-sass安装源，之后根据peerDependency执行npm</a> install sass-loader node-sass webpack —save-dev安装sass-loader。</p>
+<p>某些插件会存在版本过高的问题，所以在install时应指定版本号。</p>
+<p>为利用浏览器缓存提高渲染效率，可以将css模块和js模块分开打包，先执行npm install extract-text-webpack-plugin安装extract包，在webpack.config.js中配置ExtractTextPlugin对象，例如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> extractSass = <span class="keyword">new</span> ExtractTextPlugin(&#123;</span><br><span class="line">  filename: <span class="string">"css/[name].[contenthash].css"</span>,</span><br><span class="line">  disable: process.env.NODE_ENV === <span class="string">"development"</span>,</span><br><span class="line">  allChunks: <span class="literal">true</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: <span class="string">'./src/main.js'</span>,</span><br><span class="line">  output: &#123;</span><br><span class="line">    path: path.resolve(__dirname, <span class="string">'dist'</span>),</span><br><span class="line">    filename: <span class="string">'bundle.js'</span>，</span><br><span class="line">    publicPath: <span class="string">'dist/'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">  	rules: [&#123;</span><br><span class="line">	  test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">        use: extractSass.extract(&#123;</span><br><span class="line">          use: [&#123;</span><br><span class="line">            loader: <span class="string">'css-loader'</span></span><br><span class="line">          &#125;],</span><br><span class="line">          fallback: <span class="string">'style-loader'</span></span><br><span class="line">        &#125;) </span><br><span class="line">    &#125;]</span><br><span class="line">  &#125;,</span><br><span class="line">  plugins: [</span><br><span class="line">    extractSass</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>执行npm install url-loader —save-dev和npm install file-loader —save-dev安装url-loader和file-loader。url-loader对图片文件进行处理，应用base64对图片进行转码，转码前可以对图片的大小进行限制，图片大小如果超出限制，就使用file-loader对图片进行打包。file-loader在对图片进行打包后会默认放到dist文件夹中，可以在output中添加publicPath属性，声明所有url的默认前缀。</p>
+<p>执行npm install —save-dev babel-loader@7 babel-core babel-preset-es2015安装babel插件将ES6语法自动转换为ES5语法。</p>
+<h4 id="2-配置Vue环境"><a href="#2-配置Vue环境" class="headerlink" title="2.配置Vue环境"></a>2.配置Vue环境</h4><p>代码运行时依赖Vue，所以执行npm install vue —save。代码在打包的过程中会生成两个版本的代码，分别是runtime-only和runtime-compiler，runtime-only代码中不可以有template。在main.js创建的Vue实例中定义template，将准备放入index.html的内容写入template，编译时会自动对Vue：el管理的元素进行替换。</p>
+<p>组件以js对象形式进行组织和使用也会造成代码的可读性变差，可以利用.vue文件对template，script，style三个板块进行封装和处理。这里需要执行npm install vue-loader vue-template-compiler —save-dev安装插件对.vue进行打包。vue-loader正常运行需要引入相关plugin，具体实现参考之后的webpack.config.js完整代码。</p>
+<h4 id="3-使用相关Plugin"><a href="#3-使用相关Plugin" class="headerlink" title="3.使用相关Plugin"></a>3.使用相关Plugin</h4><p>横幅插件，在代码开头添加版权信息，使用webpack.BannerPlugin。</p>
+<p>打包html，执行npm install html-webpack-plugin@3.2.0 —save-dev安装HtmlWebpackPlugin。可以在dist文件夹中根据指定模板自动生成index.html文件，将打包的js文件，自动通过script标签插入到body中。<strong>注意</strong>：可能存在各个插件版本不兼容等问题，需要降低版本号。</p>
+<p>对bundle.js进行压缩，执行npm install uglifyjs-webpack-plugin@1.1.1 —save-dev安装插件。</p>
+<h4 id="4-本地服务器"><a href="#4-本地服务器" class="headerlink" title="4.本地服务器"></a>4.本地服务器</h4><p>webpack提供了一个可选的本地开发服务器。这个服务器基于node.js搭建，内部使用express框架，可以实现浏览器自动刷新修改后的结果。执行npm install webpack-dev-server@2.9.1 —save-dev安装devserver。同样地，我们在package.json中添加npm run的命令server，后面的webpack-dev-server就会指定自动在本地运行服务器。</p>
+<h4 id="5-webpack配置分离"><a href="#5-webpack配置分离" class="headerlink" title="5.webpack配置分离"></a>5.webpack配置分离</h4><p>首先执行npm install webpack-merge —save-dev安装插件，对生成和开发时的公有配置进行提取，创建webpack.config.base.js文件，之后对生成和开发环境的配置分别进行调整，应用merge函数对配置文件进行合并。在package.json中执行npm run命令时，添加相关配置路径—config ./build/webpack.config.dev.js。</p>
+<h3 id="五、less-与Sass基本相同，查看文档即可"><a href="#五、less-与Sass基本相同，查看文档即可" class="headerlink" title="五、less(与Sass基本相同，查看文档即可)"></a>五、less(与Sass基本相同，查看文档即可)</h3><h3 id="六、Sass"><a href="#六、Sass" class="headerlink" title="六、Sass"></a>六、Sass</h3><p>Sass(Syntactically Awesome Stylesheets)是一个CSS预处理语言，可以帮助我们减少重复代码，sass可生成良好格式化的代码，易于组织和维护</p>
+<h4 id="1-变量"><a href="#1-变量" class="headerlink" title="1.变量"></a>1.变量</h4><p>使用$声明变量名称和变量值，变量类型可包括多种，且存在全局作用域和局部作用域。可以使用!global来将变量声明为全局变量。通常情况下，我们将所有全局变量定义在同一个文件，然后使用include来包含该文件。</p>
+<h4 id="2-嵌套"><a href="#2-嵌套" class="headerlink" title="2.嵌套"></a>2.嵌套</h4><p>sass嵌套规则与HTML格式相似，支持多层嵌套。对于某些具有相同属性的前缀，可以使用嵌套属性来统一编写，例如</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$bgColor</span>: blue;</span><br><span class="line"><span class="variable">$textColor</span>: red;</span><br><span class="line"><span class="variable">$fontSize</span>: <span class="number">18px</span>;</span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="attribute">font</span>: &#123;</span><br><span class="line">      family: Arial, <span class="string">"Helvetica Neue"</span>, Helvetica, sans-serif;</span><br><span class="line">      size: <span class="variable">$fontSize</span>;</span><br><span class="line">      <span class="attribute">color</span>: <span class="variable">$textColor</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3-文件"><a href="#3-文件" class="headerlink" title="3.文件"></a>3.文件</h4><p>Sass @import指令可以导入.scss和.css文件。</p>
+<p>在文件名的开头添加下划线告诉Sass不要将其编译为css文件。</p>
+<p>@mixin指令允许我们定义一个可以在整个样式表中重复使用的样式，@include可以将@mixin样式引入到文档中，@mixin使用方法与函数类似，支持嵌套，可以传入参数，且参数可以定义默认值。可以使用…来设置可变参数。</p>
+<p>浏览器前缀使用@mixin样式可以增强代码的可读性：</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> transform(<span class="variable">$property</span>) &#123;</span><br><span class="line">	-webkit-<span class="attribute">transform</span>: <span class="variable">$property</span>;</span><br><span class="line">	-ms-<span class="attribute">transform</span>: <span class="variable">$property</span>;</span><br><span class="line">	<span class="attribute">transform</span>: <span class="variable">$property</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">	<span class="keyword">@include</span> transform(rotate(<span class="number">20deg</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用@extend指令提高代码复用性，可以告诉Sass一个选择器的样式从另一个选择器继承。</p>
+<h3 id="七、Vue-CLI-Vue-Command-Line-Interface"><a href="#七、Vue-CLI-Vue-Command-Line-Interface" class="headerlink" title="七、Vue CLI(Vue Command-Line Interface)"></a>七、Vue CLI(Vue Command-Line Interface)</h3><p>执行npm install -g @vue/cli安装vue-cli最新版本。由于存在某些项目仍有VueCLI2的需求，所以安装@vue/cli-init使用vue-cli2的命令。</p>
+<h4 id="1-VueCLI2"><a href="#1-VueCLI2" class="headerlink" title="1.VueCLI2"></a>1.VueCLI2</h4><p>执行vue init webpack <project name>，如果安装失败，可以将webpack下载到本地。</p>
+<p>runtime-compiler和runtime-only的区别：runtime-only直接调用render函数，省去了对template的编译过程，避免进行解析生成抽象语法树，减少代码量，提高程序运行效率。</p>
+<h4 id="2-VueCL3-VueCL4"><a href="#2-VueCL3-VueCL4" class="headerlink" title="2.VueCL3/VueCL4"></a>2.VueCL3/VueCL4</h4><p>可以直接通过可视化界面对项目进行管理。将webpack相关配置和插件依赖都封装起来。</p>
+<h4 id="八、Vue-Router"><a href="#八、Vue-Router" class="headerlink" title="八、Vue Router"></a>八、Vue Router</h4><p><strong>scheme://host:port/path?query#fragment</strong></p>
+<h4 id="1-配置router文件"><a href="#1-配置router文件" class="headerlink" title="1.配置router文件"></a>1.配置router文件</h4><p>将需要进行路由的文件全部导入到index.js中，创建Router实例，其中routes属性可以对路径和插件进行散列匹配，并添加mode属性对链接进行美化。在接口文件中使用router-view标签对router相关标签进行显示。</p>
+<h4 id="2-router-link"><a href="#2-router-link" class="headerlink" title="2.router-link"></a>2.router-link</h4><p>router-link默认渲染为a标签，可以通过tag属性修改标签类型，例如button，li等。to属性指定标签跳转的地址，其中可以添加内容，如果不想通过浏览器回退按钮切换页面，可以添加replace属性，将默认的栈操作改为直接替换。</p>
+<p>replace源码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">HTML5History.prototype.push = <span class="function"><span class="keyword">function</span> <span class="title">push</span> (<span class="params">location, onComplete, onAbort</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">var</span> <span class="keyword">this</span>$<span class="number">1</span> = <span class="keyword">this</span>;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">var</span> ref = <span class="keyword">this</span>;</span><br><span class="line">      <span class="keyword">var</span> fromRoute = ref.current;</span><br><span class="line">      <span class="keyword">this</span>.transitionTo(location, <span class="function"><span class="keyword">function</span> (<span class="params">route</span>) </span>&#123;</span><br><span class="line">        pushState(cleanPath(<span class="keyword">this</span>$<span class="number">1.</span>base + route.fullPath));</span><br><span class="line">        handleScroll(<span class="keyword">this</span>$<span class="number">1.</span>router, route, fromRoute, <span class="literal">false</span>);</span><br><span class="line">        onComplete &amp;&amp; onComplete(route);</span><br><span class="line">      &#125;, onAbort);</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    HTML5History.prototype.replace = <span class="function"><span class="keyword">function</span> <span class="title">replace</span> (<span class="params">location, onComplete, onAbort</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">var</span> <span class="keyword">this</span>$<span class="number">1</span> = <span class="keyword">this</span>;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">var</span> ref = <span class="keyword">this</span>;</span><br><span class="line">      <span class="keyword">var</span> fromRoute = ref.current;</span><br><span class="line">      <span class="keyword">this</span>.transitionTo(location, <span class="function"><span class="keyword">function</span> (<span class="params">route</span>) </span>&#123;</span><br><span class="line">        replaceState(cleanPath(<span class="keyword">this</span>$<span class="number">1.</span>base + route.fullPath));</span><br><span class="line">        handleScroll(<span class="keyword">this</span>$<span class="number">1.</span>router, route, fromRoute, <span class="literal">false</span>);</span><br><span class="line">        onComplete &amp;&amp; onComplete(route);</span><br><span class="line">      &#125;, onAbort);</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="3-动态路由"><a href="#3-动态路由" class="headerlink" title="3.动态路由"></a>3.动态路由</h4><p>Router实例中的routes属性添加路径匹配时，可以对路径进行动态捕获，例如</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">path: <span class="string">'/user/:userid'</span>,</span><br><span class="line">component: User</span><br></pre></td></tr></table></figure>
+<p>可以捕获userid，在router-link中进行动态跳转时，则可以使用v-bind对路径进行绑定。这里在User组件中，可以通过this.$route.params.userid来获取跳转时获取的userid的值，并将其呈现在组件中。</p>
+<p>$route和$router成员的注册源码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">install</span> (<span class="params">Vue</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (install.installed &amp;&amp; _Vue === Vue) &#123; <span class="keyword">return</span> &#125;</span><br><span class="line">    install.installed = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">    _Vue = Vue;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> isDef = <span class="function"><span class="keyword">function</span> (<span class="params">v</span>) </span>&#123; <span class="keyword">return</span> v !== <span class="literal">undefined</span>; &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> registerInstance = <span class="function"><span class="keyword">function</span> (<span class="params">vm, callVal</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">var</span> i = vm.$options._parentVnode;</span><br><span class="line">      <span class="keyword">if</span> (isDef(i) &amp;&amp; isDef(i = i.data) &amp;&amp; isDef(i = i.registerRouteInstance)) &#123;</span><br><span class="line">        i(vm, callVal);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    Vue.mixin(&#123;</span><br><span class="line">      beforeCreate: <span class="function"><span class="keyword">function</span> <span class="title">beforeCreate</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (isDef(<span class="keyword">this</span>.$options.router)) &#123;</span><br><span class="line">          <span class="keyword">this</span>._routerRoot = <span class="keyword">this</span>;</span><br><span class="line">          <span class="keyword">this</span>._router = <span class="keyword">this</span>.$options.router;</span><br><span class="line">          <span class="keyword">this</span>._router.init(<span class="keyword">this</span>);</span><br><span class="line">          Vue.util.defineReactive(<span class="keyword">this</span>, <span class="string">'_route'</span>, <span class="keyword">this</span>._router.history.current);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="keyword">this</span>._routerRoot = (<span class="keyword">this</span>.$parent &amp;&amp; <span class="keyword">this</span>.$parent._routerRoot) || <span class="keyword">this</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        registerInstance(<span class="keyword">this</span>, <span class="keyword">this</span>);</span><br><span class="line">      &#125;,</span><br><span class="line">      destroyed: <span class="function"><span class="keyword">function</span> <span class="title">destroyed</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        registerInstance(<span class="keyword">this</span>);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">Object</span>.defineProperty(Vue.prototype, <span class="string">'$router'</span>, &#123;</span><br><span class="line">      <span class="keyword">get</span>: function <span class="keyword">get</span> () &#123; <span class="keyword">return</span> <span class="keyword">this</span>._routerRoot._router &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">Object</span>.defineProperty(Vue.prototype, <span class="string">'$route'</span>, &#123;</span><br><span class="line">      <span class="keyword">get</span>: function <span class="keyword">get</span> () &#123; <span class="keyword">return</span> <span class="keyword">this</span>._routerRoot._route &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    Vue.component(<span class="string">'RouterView'</span>, View);</span><br><span class="line">    Vue.component(<span class="string">'RouterLink'</span>, Link);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> strats = Vue.config.optionMergeStrategies;</span><br><span class="line">    <span class="comment">// use the same hook merging strategy for route hooks</span></span><br><span class="line">    strats.beforeRouteEnter = strats.beforeRouteLeave = strats.beforeRouteUpdate = strats.created;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="4-导航守卫"><a href="#4-导航守卫" class="headerlink" title="4.导航守卫"></a>4.导航守卫</h4><p>导航守卫的关键是理解beforeEach，beforeRouteLeave等函数参数中的next函数，next函数可以被用于用户界面的登录。</p>
+<h4 id="5-keep-alive"><a href="#5-keep-alive" class="headerlink" title="5.keep-alive"></a>5.keep-alive</h4><p>在Vue组件的生命周期中，利用浏览器的缓存对已经创建好的实例进行保存，防止调用created函数。只有在对router-view外层包装了keep-alive标签后，才可以在实例中调用activated/deactivated，这两个函数可以用来监听网页的跳转，和守卫相关函数类似。</p>
+<h4 id="6-路由解耦"><a href="#6-路由解耦" class="headerlink" title="6.路由解耦"></a>6.路由解耦</h4><p>在组件中使用$route会使之与其对应路由形成高度耦合，从而组件只能在某些特定的URL上使用。可使用props将组件和路由解耦</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">name: <span class="string">'User'</span>,</span><br><span class="line">path: <span class="string">'/user/:userid'</span>,</span><br><span class="line">component: <span class="function"><span class="params">()</span> =&gt;</span> User,</span><br><span class="line">props: <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<h4 id="7-路由懒加载"><a href="#7-路由懒加载" class="headerlink" title="7.路由懒加载"></a>7.路由懒加载</h4><p>打包应用的过程中，为防止js包过于庞大，需要将不同路由对应的组件分割成为不同的代码块，当路由被访问到的时候才加载对应组件。结合Vue的异步组件和Webpack的代码分割功能：如上文代码块</p>
+<h4 id="附：一些问题的解决办法"><a href="#附：一些问题的解决办法" class="headerlink" title="附：一些问题的解决办法"></a>附：一些问题的解决办法</h4><h5 id="1-Error-Avoided-redundant-navigation-to-current-location"><a href="#1-Error-Avoided-redundant-navigation-to-current-location" class="headerlink" title="1.Error: Avoided redundant navigation to current location"></a>1.Error: Avoided redundant navigation to current location</h5><p>直接修改VueRouter成员，取消报错功能，防止终端看起来过于混乱：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> originalReplace = VueRouter.prototype.replace</span><br><span class="line">VueRouter.prototype.replace = <span class="function"><span class="keyword">function</span> <span class="title">replace</span>(<span class="params">location</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> originalReplace.call(<span class="keyword">this</span>, location).catch(<span class="function"><span class="params">err</span> =&gt;</span> err)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> originalPush = VueRouter.prototype.push</span><br><span class="line">VueRouter.prototype.push = <span class="function"><span class="keyword">function</span> <span class="title">push</span>(<span class="params">location</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> originalPush.call(<span class="keyword">this</span>, location).catch(<span class="function"><span class="params">err</span> =&gt;</span> err)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="九、Vuex"><a href="#九、Vuex" class="headerlink" title="九、Vuex"></a>九、Vuex</h3><p>vuex提倡应用单一状态树(single state of truth)对数据进行管理，用this.$store获取。</p>
+<h4 id="1-mutations"><a href="#1-mutations" class="headerlink" title="1.mutations"></a>1.mutations</h4><p>vuex状态更新的唯一方式是提交mutation，mutation主要包括两部分：字符串的事件类型和回调函数(handler)。在对state中存储的变量进行操作时需要在mutations中定义相关函数，这些函数默认参数为state。建议mutation函数声明统一变量名。mutation一般用于同步操作，异步操作则推荐使用actions。mutation外部调用使用this.$store.commit([function], payloads)</p>
+<h4 id="2-getters"><a href="#2-getters" class="headerlink" title="2.getters"></a>2.getters</h4><p>返回state中变量的相关形式，定义的函数默认参数只有两个，state和可选的getters本身，进行嵌套操作，也可以返回函数传递其他参数。</p>
+<h4 id="3-actions"><a href="#3-actions" class="headerlink" title="3.actions"></a>3.actions</h4><p>actions使用不可以跨过mutations，而是在actions定义的函数中回调mutations的函数，this.$store.dispatch([function], payloads)。actions中的函数可以返回Promise，具体参见异步请求讲解的内容。</p>
+<h4 id="4-moduels"><a href="#4-moduels" class="headerlink" title="4.moduels"></a>4.moduels</h4><p>对store进行分区，防止内容过于臃肿难于理解。模块中getters函数可以存在第三个参数rootState，访问根store区域的内容。actions中的commit只会调用本模块中的内容，所以可以调用rootState和rootMutations。</p>
+<h3 id="十、异步请求"><a href="#十、异步请求" class="headerlink" title="十、异步请求"></a>十、异步请求</h3><h4 id="1-Promise"><a href="#1-Promise" class="headerlink" title="1.Promise"></a>1.Promise</h4><h4 id="2-Async"><a href="#2-Async" class="headerlink" title="2.Async"></a>2.Async</h4><h4 id="3-python异步库asyncio"><a href="#3-python异步库asyncio" class="headerlink" title="3.python异步库asyncio"></a>3.python异步库asyncio</h4><p>执行asyncio.run()运行函数，在一个协程中，使用await func()意味着当前协程需要等待func()u运行之后才执行。</p>
+<p>执行asyncio.create_task创建运行任务，并使用await <task>异步执行不同任务，当前协程继续执行，最后用await同步结果。</p>
+<p><strong>协程</strong>是asyncio异步切换的基础，可以在其他协程中await。</p>
+<p>asyncio.Future()和asyncio.gather()函数</p>
+<h3 id="十一、配置django"><a href="#十一、配置django" class="headerlink" title="十一、配置django"></a>十一、配置django</h3><p>安装完成anaconda后注意到root中的内容过于臃肿，可以自行配置conda虚拟环境，并安装需要的包，执行conda create -n <name>。可以执行conda list查看安装了哪些包，执行conda env list或者conda info -e查看当前存在哪些虚拟环境，执行activate <name>或者conda.bat activate <name>激活虚拟环境。可以执行conda remove移除虚拟环境。</p>
+<p>执行conda install django安装相应版本，考虑到项目前后端分离，且端口不一致，vue是8080，django是8000，会存在找不到服务的问题，首先执行pip install django-cors-headers并修改settings.py。</p>
+<h3 id="十二、Docker"><a href="#十二、Docker" class="headerlink" title="十二、Docker"></a>十二、Docker</h3><p>docker容器下运行minio后端</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name myminio -p 8576:9000 minio/minio server /data</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 9000:9000 --name minio \</span><br><span class="line">    -d --restart=always \</span><br><span class="line">    -e "MINIO_ACCESS_KEY=admin" \</span><br><span class="line">    -e "MINIO_SECRET_KEY=123@abc.com" \</span><br><span class="line">    -v /home/data:/data \</span><br><span class="line">    -v /home/config:/root/.minio \</span><br><span class="line">    minio/minio server /data</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://tkfblog.com/post/c8c4683d.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="TKF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/TKF.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TKF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/post/c8c4683d.html" itemprop="url">数据链路层</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-19T15:37:52+08:00">
+                2020-06-19
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-08-13T12:11:12+08:00">
+                2020-08-13
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Networks/" itemprop="url" rel="index">
+                    <span itemprop="name">Computer Networks</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="一、数据链路层的设计问题"><a href="#一、数据链路层的设计问题" class="headerlink" title="一、数据链路层的设计问题"></a>一、数据链路层的设计问题</h3><h4 id="1-服务"><a href="#1-服务" class="headerlink" title="1.服务"></a>1.服务</h4><p>数据链路层使用物理层提供的服务在通信信道上发送和接收比特。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">完成的功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">向网络层提供一个定义良好的服务接口</td>
+</tr>
+<tr>
+<td style="text-align:left">处理传输错误（检错+纠错）</td>
+</tr>
+<tr>
+<td style="text-align:left">调节数据流，确保慢速的接收方不会被快速的发送方淹没</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>数据链路层从网络层获得数据包，然后将这些数据包封装成<strong>帧</strong>(frame)以便传输。每个帧包含一个帧头，一个有效载荷(用于存放数据包)以及一个帧尾。</p>
+<p>数据链路层的协议更加简单和纯粹，适合详细学习理解其中的原理。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>数据链路层提供的服务</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>无确认的无连接服务：发送及接收独立的帧而不对这些帧进行确认，主要适用于错误率很低的场合和实时通信</td>
+</tr>
+<tr>
+<td>有确认的无连接服务：发送的每一帧都需要单独确认，主要适用于不可靠的信道，如无线系统(802.11)</td>
+</tr>
+<tr>
+<td>有确认的有连接服务：为网络层进程提供可靠的比特流，主要适用于长距离且不可靠的链路</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>面向连接的服务有三个阶段：建立连接，初始化各种变量和计数器；传输数据帧；释放连接。</p>
+<h4 id="2-成帧"><a href="#2-成帧" class="headerlink" title="2.成帧"></a>2.成帧</h4><h5 id="1-字节计数法-会错位，无法纠错无法重传，无实际应用价值"><a href="#1-字节计数法-会错位，无法纠错无法重传，无实际应用价值" class="headerlink" title="(1)字节计数法(会错位，无法纠错无法重传，无实际应用价值)"></a>(1)字节计数法(会错位，无法纠错无法重传，无实际应用价值)</h5><h5 id="2-PPP协议-Point-to-Point-Protocol"><a href="#2-PPP协议-Point-to-Point-Protocol" class="headerlink" title="(2)PPP协议(Point-to-Point Protocol)"></a>(2)PPP协议(Point-to-Point Protocol)</h5><h5 id="3-HDLC协议-High-Level-Data-Link-Control"><a href="#3-HDLC协议-High-Level-Data-Link-Control" class="headerlink" title="(3)HDLC协议(High-Level Data Link Control)"></a>(3)HDLC协议(High-Level Data Link Control)</h5><h5 id="4-物理层编码违禁法"><a href="#4-物理层编码违禁法" class="headerlink" title="(4)物理层编码违禁法"></a>(4)物理层编码违禁法</h5><p>4B/5B线性编码模式，增加25%开销获得额外的标志字段，具体参见<a href="https://tkf2019.github.io/post/652d7ab3.html" target="_blank" rel="noopener">物理层</a>内容；以太网和802.11使用了共同的分界模式，应用<strong>前导码</strong>(preamble)：用一个定义良好的比特来标识一帧的开始，前导码之后的长度字段用来定位帧的结束位置</p>
+<h4 id="3-差错控制"><a href="#3-差错控制" class="headerlink" title="3.差错控制"></a>3.差错控制</h4><p>协议要求接收方发回一些特殊的控制帧，发送方可以得知传输过程是否发生了错误，并进行重传。如果一个帧被完全丢失，则无法判断该帧的信息是否出错，发送方需要启动一个计时器。一般情况下，在计时器超时前，该帧应该被正确地接收，并且确认帧也被传了回来。确认丢失之后，发送方需要重新发送帧。为避免接收方重复地向网络层发送同一信息，需要在帧中加入识别序号用以区分原始帧和重传帧。</p>
+<h4 id="4-流量控制"><a href="#4-流量控制" class="headerlink" title="4.流量控制"></a>4.流量控制</h4><p>为协调发送方发送帧和接收方接收并处理帧的速度，常用的办法有两种：<strong>基于反馈的流量控制</strong>(feedback-based flow control)和<strong>基于速率的流量控制</strong>(rate-based flow control)。基于反馈的流控制协议包含了许多定义良好的规则规定发送方什么时候可以发送下一帧。</p>
+<h3 id="二、差错检测和纠正"><a href="#二、差错检测和纠正" class="headerlink" title="二、差错检测和纠正"></a>二、差错检测和纠正</h3><p>错误处理有两种基本策略，都在发送的数据中加入冗余信息。前一种策略使用了<strong>纠错码</strong>(error-correcting code)，通常也称为<strong>前向纠错</strong>(FEC, Froward Error Correction)；后一种策略使用了<strong>检错码</strong>(error-detecting code)。</p>
+<h4 id="1-纠错码"><a href="#1-纠错码" class="headerlink" title="1.纠错码"></a>1.纠错码</h4><h5 id="1-1-相关定义"><a href="#1-1-相关定义" class="headerlink" title="1.1 相关定义"></a>1.1 相关定义</h5><p>一帧由m个<strong>数据位(信息)</strong>和r个<strong>冗余位(校验位)</strong>组成。校验码由数据位的函数计算而得，即校验位由数据位唯一确定，称为<strong>块码</strong>(block code)。<strong>系统码</strong>(systematic code)先发送数据码，再发送校验码；<strong>线性码</strong>(line code)通过线性函数计算出校验码，例如XOR和模2加。数据块总长度n=m+r，称为n位<strong>码字</strong>(codeword)，合法信息与码长的比值称为<strong>码率</strong>(code rate)。</p>
+<h5 id="1-2-海明码"><a href="#1-2-海明码" class="headerlink" title="1.2 海明码"></a>1.2 海明码</h5><p>两个码字XOR之后所得结果中1的个数称为<strong>海明距离</strong>(Hamming distance)。</p>
+<p>块码的检错和纠错特性和其海明距离有关。检测d个错误，需要距离为d+1的编码方案；纠正d个错误，需要距离为2d+1的编码方案。</p>
+<p>设想一种编码方案针对上述码字可纠正所有的单个位错误，因而$2^m$个合法信息对应n+1个不同码字(每一位都有可能发生错误)，且总码字数量不能超过$2^n$，则有</p>
+<script type="math/tex; mode=display">
+m+1\leqslant 2^r-r</script><p>可以根据该公式计算出m位块码对应校验位个数。</p>
+<p>类似地，对于纠正d个错误，可以得到</p>
+<script type="math/tex; mode=display">
+C^d_{m+r}+1\leqslant 2^r</script><p>在海明码中，码字的位数从左至右编号，其中2的幂次方位为校验位，其余位为数据位依次排列。每一个校验位进行模2加，或对某些位的集合进行偶(或奇)校验。求和时，只需将二进制表达覆盖了该2 的幂次方的数进行相加，例如1，3，5，7，9……或2，3，6，7，10，11……，保证最后算得的数为偶数或奇数。对收到的码字进行纠错时，则再次按照前述集合进行模2加，最后从高至低位的二进制数即为错误，取反即可得到正确答案。</p>
+<h5 id="1-3-卷积码"><a href="#1-3-卷积码" class="headerlink" title="1.3 卷积码"></a>1.3 卷积码</h5><p>书中表述不太全，主要思想为卷积码不属于块码，其解码方法为<strong>软判决解码</strong>(soft-decision decoding)，可对原始码进行概率估计；与之对应的为<strong>硬判决解码</strong>(hard-decision decoding)。</p>
+<p>关于Viterbi算法，请见<a href="">HMM</a>。</p>
+<h5 id="1-4-里德所罗门码"><a href="#1-4-里德所罗门码" class="headerlink" title="1.4 里德所罗门码"></a>1.4 里德所罗门码</h5><h5 id="1-5-低密度奇偶校验码"><a href="#1-5-低密度奇偶校验码" class="headerlink" title="1.5 低密度奇偶校验码"></a>1.5 低密度奇偶校验码</h5><h4 id="2-检错码"><a href="#2-检错码" class="headerlink" title="2.检错码"></a>2.检错码</h4><h5 id="2-1-奇偶"><a href="#2-1-奇偶" class="headerlink" title="2.1 奇偶"></a>2.1 奇偶</h5><h5 id="2-2-校验和"><a href="#2-2-校验和" class="headerlink" title="2.2 校验和"></a>2.2 校验和</h5><h5 id="2-3-循环冗余校验码-CRC-Cyclic-Redundancy-Check"><a href="#2-3-循环冗余校验码-CRC-Cyclic-Redundancy-Check" class="headerlink" title="2.3 循环冗余校验码(CRC, Cyclic Redundancy Check)"></a>2.3 循环冗余校验码(CRC, Cyclic Redundancy Check)</h5><h3 id="三、基本协议"><a href="#三、基本协议" class="headerlink" title="三、基本协议"></a>三、基本协议</h3><h4 id="1-Utopia单工协议"><a href="#1-Utopia单工协议" class="headerlink" title="1.Utopia单工协议"></a>1.Utopia单工协议</h4><h4 id="2-无错信道上的单工停-等式协议"><a href="#2-无错信道上的单工停-等式协议" class="headerlink" title="2.无错信道上的单工停-等式协议"></a>2.无错信道上的单工停-等式协议</h4><h4 id="3-有错信道上的单工停-等式协议"><a href="#3-有错信道上的单工停-等式协议" class="headerlink" title="3.有错信道上的单工停-等式协议"></a>3.有错信道上的单工停-等式协议</h4><h3 id="四、滑动窗口协议"><a href="#四、滑动窗口协议" class="headerlink" title="四、滑动窗口协议"></a>四、滑动窗口协议</h3>
+          
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://tkfblog.com/post/8f7ce547.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1755,7 +2190,7 @@ Maximum=B\log_2(1+S/N)(bps)</script><p>热噪声取决于很多因素，例如�
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1891,9 +2326,6 @@ Maximum=B\log_2(1+S/N)(bps)</script><p>热噪声取决于很多因素，例如�
 
 
 
-  
-  
-
 
 
 
@@ -1930,16 +2362,6 @@ Maximum=B\log_2(1+S/N)(bps)</script><p>热噪声取决于很多因素，例如�
   
   
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/three/three.min.js"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
   
 
 
